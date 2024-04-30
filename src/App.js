@@ -1,3 +1,9 @@
+import {
+  Nav,
+  Header,
+  Main,
+  Footer,
+} from './components';
 import './App.css';
 
 function App() {
