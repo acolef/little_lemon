@@ -1,4 +1,4 @@
-export const Nav = () => {
+const Nav = () => {
     return (
         <nav>
             <img
@@ -30,3 +30,5 @@ export const Nav = () => {
         </nav>
     );
 };
+
+export default Nav;

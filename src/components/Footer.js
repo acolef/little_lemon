@@ -1,4 +1,4 @@
-export const Footer = () => {
+const Footer = () => {
     return (
         <>
             <section>
@@ -45,3 +45,5 @@ export const Footer = () => {
         </>
     );
 };
+
+export default Footer;
