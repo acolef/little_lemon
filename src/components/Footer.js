@@ -2,7 +2,6 @@ const Footer = () => {
     return (
         <>
             <section>
-                <h4>Doormat &br; Navigation</h4>
                 <nav>
                     <ul>
                         <li>

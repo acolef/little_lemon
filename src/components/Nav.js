@@ -1,33 +1,56 @@
+import '../styles/Nav.css';
+import logo from '../assets/Logo.png';
+
+const links = [
+    {
+        info: "Home",
+        url: "#",
+    },
+    {
+        info: "About",
+        url: "#",
+    },
+    {
+        info: "Menu",
+        url: "#",
+    },
+    {
+        info: "Reservations",
+        url: "#",
+    },
+    {
+        info: "Order Online",
+        url: "#",
+    },
+    {
+        info: "Login",
+        url: "#",
+    },
+];
+
 const Nav = () => {
     return (
-        <nav>
-            <img
-                src="assets/Logo.svg"
-                alt="Little Lemon restaurant logo"
-                width="202"
-                height="61"
-            />
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="menu.html">Menu</a>
-                </li>
-                <li>
-                    <a href="reservations.html">Reservations</a>
-                </li>
-                <li>
-                    <a href="online-ordering.html">Order Online</a>
-                </li>
-                <li>
-                    <a href="login.html">Login</a>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <nav className="navbar" role="navigation">
+                <div className="nav-elements">
+                    <img
+                        src={logo}
+                        alt="Little Lemon restaurant logo"
+                    />
+                    <ul className="nav-links">
+                        {links.map((data, i) => {
+                            return (
+                                <li key={i}>
+                                    <a href={data.url}>
+                                        {data.info}
+                                    </a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
 };
 

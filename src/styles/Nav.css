@@ -1,0 +1,30 @@
+header {
+    padding-block: 1em;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar ul {
+    padding-left: 0;
+}
+
+.navbar img {
+    width: 10em;
+}
+
+.nav-elements {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0 2cqi;
+}
