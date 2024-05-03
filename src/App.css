@@ -1,14 +1,15 @@
 /* A wrapper that prevents wrapped content from touching screen edges */
 .content-wrapper {
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
 }
 
 ul,
+p,
 h1, h2, h3, h4 {
     margin: 0;
 }
 
 .page-section {
-    width: 100;
+    width: 100%;
 }

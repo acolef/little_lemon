@@ -1,0 +1,34 @@
+main.page-section {
+    padding-top: 10em;
+    padding-bottom: 5em;
+}
+
+.hero-elements {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 3cqi;
+}
+
+.hero-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2cqi 0;
+}
+
+.hero-column section {
+    max-width: 30cqi;
+}
+
+.hero-elements img {
+    height: 22em;
+}
+
+.breakout-img {
+    position: relative;
+}
+
+.breakout-img img {
+    position: absolute;
+    top: 0;
+    right: 25%;
+}
