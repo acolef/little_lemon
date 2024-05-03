@@ -71,17 +71,17 @@ const Footer = () => {
                     <div className="footer-links-section">
                         <section>
                             <h4>Social Media</h4>
-                            <ul>
-                                {socialmedia.map((data, i) => {
-                                    return (
-                                        <li key={i}>
-                                            <a href={`https://www.${data}.com`}>
-                                                {data}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                                <ul>
+                                    {socialmedia.map((data, i) => {
+                                        return (
+                                            <li key={i}>
+                                                <a href={`https://www.${data}.com`}>
+                                                    {data}
+                                                </a>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
                         </section>
                     </div>
                 </div>
