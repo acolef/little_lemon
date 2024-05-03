@@ -4,10 +4,11 @@
     margin: 0 auto;
 }
 
-ul {
+ul,
+h1, h2, h3, h4 {
     margin: 0;
 }
 
-h1, h2, h3, h4 {
-    margin: 0;
+.page-section {
+    width: 100;
 }
