@@ -1,5 +1,5 @@
 import '../styles/Hero.css';
-import heroImage from '../assets/restaurantfood.jpg';
+import heroImage from '../assets/restaurantfood-min.jpg';
 
 const description = "We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.";
 
