@@ -1,6 +1,10 @@
 header {
     padding-block: 1em;
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: #ffffff;
 }
 
 .navbar {
@@ -8,17 +12,20 @@ header {
     justify-content: center;
 }
 
+/* Logo sizing */
 .navbar img {
     width: 10em;
 }
 
+/* Container for the logo and link ul */
 .nav-elements {
     display: flex;
     justify-content: space-between;
-    width: 80%;
     align-items: center;
+    width: 80%;
 }
 
+/* The ul that contains the links */
 .nav-links {
     display: flex;
     list-style: none;
