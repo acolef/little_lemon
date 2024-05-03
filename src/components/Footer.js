@@ -1,6 +1,35 @@
 import '../styles/Footer.css';
 import restaurant from '../assets/restaurant.jpg';
 
+const links = [
+    {
+        info: "Home",
+        url: "#",
+    },
+    {
+        info: "About",
+        url: "#",
+    },
+    {
+        info: "Menu",
+        url: "#",
+    },
+    {
+        info: "Reservations",
+        url: "#",
+    },
+    {
+        info: "Order Online",
+        url: "#",
+    },
+    {
+        info: "Login",
+        url: "#",
+    },
+];
+
+const socialmedia = ["Facebook", "Pinterest", "X"];
+
 const Footer = () => {
     return (
         <footer className="footer-section">
@@ -12,28 +41,19 @@ const Footer = () => {
                 <div className="footer-links">
                     <div className="footer-links-section">
                         <section>
-                            <nav role="navigation">
-                                <ul>
-                                    <li>
-                                        <a href="index.html">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">About</a>
-                                    </li>
-                                    <li>
-                                        <a href="menu.html">Menu</a>
-                                    </li>
-                                    <li>
-                                        <a href="reservations.html">Reservations</a>
-                                    </li>
-                                    <li>
-                                        <a href="online-ordering.html">Order Online</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.html">Login</a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <ul>
+                                <nav role="navigation">
+                                    {links.map((data, i) => {
+                                        return (
+                                            <li key={i}>
+                                                <a href={data.url}>
+                                                    {data.info}
+                                                </a>
+                                            </li>
+                                        );
+                                    })}
+                                </nav>
+                            </ul>
                         </section>
                     </div>
 
@@ -51,9 +71,17 @@ const Footer = () => {
                     <div className="footer-links-section">
                         <section>
                             <h4>Social Media</h4>
-                            <article>
-                                <p>Social media links here</p>
-                            </article>
+                            <ul>
+                                {socialmedia.map((data, i) => {
+                                    return (
+                                        <li key={i}>
+                                            <a href={`https://www.${data}.com`}>
+                                                {data}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </section>
                     </div>
                 </div>
