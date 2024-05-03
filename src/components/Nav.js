@@ -28,7 +28,7 @@ const links = [
     },
 ];
 
-const Nav = () => {
+const Navbar = () => {
     return (
         <header>
             <nav className="navbar" role="navigation">
@@ -51,6 +51,12 @@ const Nav = () => {
                 </div>
             </nav>
         </header>
+    );
+};
+
+const Nav = () => {
+    return (
+        <Navbar />
     );
 };
 
