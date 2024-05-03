@@ -1,0 +1,20 @@
+.specials {
+    padding-top: 7em;
+    padding-bottom: 3.5em;
+}
+
+.specials-elements {
+    display: flex;
+    flex-direction: column;
+}
+
+.specials-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.specials-cards {
+    display: flex;
+    justify-content: space-between;
+}

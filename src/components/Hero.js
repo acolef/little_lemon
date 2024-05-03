@@ -12,9 +12,9 @@ const Hero = () => {
                         <h1>
                             Little Lemon
                         </h1>
-                        <h2>
+                        <h3>
                             Chicago
-                        </h2>
+                        </h3>
                     </section>
                     <section>
                         <p>
