@@ -1,7 +1,7 @@
 @import '../App.css';
 
 main.page-section {
-    padding-top: 9em;
+    padding-top: 7.5em;
     padding-bottom: 1em;
     background-color: var(--primary-green);
 }
