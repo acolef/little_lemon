@@ -19,15 +19,12 @@ main.page-section {
     max-width: 30cqi;
 }
 
-.hero-column img {
-    height: 22em;
-}
-
 .breakout-img {
     position: relative;
 }
 
 .breakout-img img {
+    height: 22em;
     position: absolute;
     top: 0;
     right: 25%;

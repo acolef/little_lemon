@@ -27,7 +27,7 @@ const Hero = () => {
                         </p>
                     </section>
                 </div>
-                <div className="hero-column breakout-img">
+                <div className="breakout-img">
                     <img
                         src={heroImage}
                         alt="An employee holding a plate of food"

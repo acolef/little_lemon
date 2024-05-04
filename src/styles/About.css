@@ -1,0 +1,44 @@
+.about {
+    padding-top: 4em;
+    padding-bottom: 18em;
+}
+
+.about-elements {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2em 0;
+}
+
+.about-column p{
+    text-align: justify;
+}
+
+.about-column section {
+    max-width: 35cqi;
+}
+
+.img-stack {
+    display: flex;
+    position: relative;
+}
+
+.lower {
+    width: 25em;
+    position: absolute;
+    top: 7em;
+    right: 20em;
+    z-index: 0;
+}
+
+.higher {
+    width: 25em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
