@@ -1,3 +1,5 @@
+@import '../App.css';
+
 header {
     padding-block: 1em;
     width: 100%;
@@ -22,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 75%;
+    width: var(--content-width);
 }
 
 /* The ul that contains the links */

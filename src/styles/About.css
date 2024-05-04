@@ -1,6 +1,9 @@
+@import '../App.css';
+
 .about {
-    padding-top: 4em;
-    padding-bottom: 18em;
+    padding-top: 5em;
+    padding-bottom: 13em;
+    background-color: var(--primary-green);
 }
 
 .about-elements {
@@ -25,10 +28,6 @@
 .img-stack {
     display: flex;
     position: relative;
-}
-
-.img-stack img {
-    border-radius: 0;
 }
 
 .lower {

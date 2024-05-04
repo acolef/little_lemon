@@ -1,6 +1,9 @@
+@import '../App.css';
+
 main.page-section {
-    padding-top: 10em;
-    padding-bottom: 5em;
+    padding-top: 9em;
+    padding-bottom: 1em;
+    background-color: var(--primary-green);
 }
 
 .hero-elements {
@@ -24,7 +27,7 @@ main.page-section {
 }
 
 .breakout-img img {
-    height: 22em;
+    height: 25em;
     position: absolute;
     top: 0;
     right: 25%;

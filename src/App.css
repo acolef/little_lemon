@@ -8,7 +8,6 @@
     src: url('./fonts/Karla-VariableFont_wght.woff');
 }
 
-/* Colors */
 :root {
     --primary-green: #495E57;
     --primary-yellow: #F4CE14;
@@ -16,11 +15,12 @@
     --secondary-peach: #FBDABB;
     --highlight-gray: #EDEFEE;
     --highlight-black: #333333;
+    --content-width: 75%;
 }
 
 /* A wrapper that prevents wrapped content from touching screen edges */
 .content-wrapper {
-    width: 75%;
+    width: var(--content-width);
     margin: 0 auto;
 }
 
@@ -47,6 +47,10 @@ a {
     color: var(--highlight-black);
 }
 
+p {
+    color: var(--highlight-gray);
+}
+
 p, a {
     font-family: Karla, sans-serif;
     font-size: 16pt;
@@ -55,6 +59,7 @@ p, a {
 
 p.highlight {
     font-weight: 500;
+    color: var(--secondary-salmon);
 }
 
 p.home, p.card {
@@ -64,6 +69,7 @@ p.home, p.card {
 
 h1 {
     font-size: 50pt;
+    color: var(--primary-yellow);
 }
 
 h1.card {
@@ -77,6 +83,7 @@ h2 {
 
 h3 {
     font-size: 36pt;
+    color: var(--highlight-gray);
 }
 
 h4 {
@@ -86,4 +93,8 @@ h4 {
 /* Image styling */
 img {
     border-radius: 16px;
+}
+
+img[class] {
+    border-radius: 0;
 }

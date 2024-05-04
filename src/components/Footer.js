@@ -35,6 +35,7 @@ const Footer = () => {
         <footer className="footer-section">
             <div className="footer-elements content-wrapper">
                 <img
+                    className="footer-img"
                     src={restaurant}
                     alt="An indoor photograph of the Little Lemon restaurant"
                 />
