@@ -51,7 +51,7 @@ a {
 
 /* linear-gradient(color x-coord-begin y-coord-begin) */
 a:hover {
-    background: linear-gradient(var(--primary-yellow) 0 0) left 50% top 50% / 100% 100% no-repeat;
+    background-size: 100% 100%;
 }
 
 p {
