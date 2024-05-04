@@ -1,15 +1,89 @@
+@font-face {
+    font-family: "Markazi Text";
+    src: url('./fonts/MarkaziText-VariableFont_wght.woff');
+}
+
+@font-face {
+    font-family: "Karla";
+    src: url('./fonts/Karla-VariableFont_wght.woff');
+}
+
+/* Colors */
+:root {
+    --primary-green: #495E57;
+    --primary-yellow: #F4CE14;
+    --secondary-salmon: #EE9972;
+    --secondary-peach: #FBDABB;
+    --highlight-gray: #EDEFEE;
+    --highlight-black: #333333;
+}
+
 /* A wrapper that prevents wrapped content from touching screen edges */
 .content-wrapper {
     width: 75%;
     margin: 0 auto;
 }
 
+.page-section {
+    width: 100%;
+}
+
+/* Font styling */
 ul,
 p,
-h1, h2, h3, h4 {
+h1, h2, h3, h4  {
     margin: 0;
 }
 
-.page-section {
-    width: 100%;
+h1, h2, h3, h4 {
+    font-family: 'Markazi Text', serif;
+    font-weight: bold;
+    line-height: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--highlight-black);
+}
+
+p, a {
+    font-family: Karla, sans-serif;
+    font-size: 16pt;
+    line-height: 1.5em;
+}
+
+p.highlight {
+    font-weight: 500;
+}
+
+p.home, p.card {
+    font-size: 18pt;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 50pt;
+}
+
+h1.card {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 40pt;
+}
+
+h3 {
+    font-size: 36pt;
+}
+
+h4 {
+    font-size: 24pt;
+}
+
+/* Image styling */
+img {
+    border-radius: 16px;
 }

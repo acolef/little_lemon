@@ -17,7 +17,7 @@ const Hero = () => {
                         </h3>
                     </section>
                     <section>
-                        <p>
+                        <p className="home">
                             {description}
                         </p>
                     </section>

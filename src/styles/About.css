@@ -27,6 +27,10 @@
     position: relative;
 }
 
+.img-stack img {
+    border-radius: 0;
+}
+
 .lower {
     width: 25em;
     position: absolute;
