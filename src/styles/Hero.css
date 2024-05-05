@@ -32,3 +32,32 @@ main.page-section {
     top: 0;
     right: 25%;
 }
+
+/* Media queries */
+/* Small screens (<= 600px) */
+@media (max-width: 600px) {
+    .hero-elements {
+        flex-direction: column;
+        row-gap: 2em;
+    }
+
+    .breakout-img, .breakout-img img {
+        position: static;
+    }
+
+    .breakout-img {
+        align-self: center;
+    }
+
+    .breakout-img img {
+        width: 100%;
+    }
+
+    .hero-column section {
+        max-width: fit-content;
+    }
+
+    .hero-column p {
+        text-align: justify;
+    }
+}
