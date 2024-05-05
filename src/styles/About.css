@@ -17,7 +17,7 @@
     gap: 2em 0;
 }
 
-.about-column p{
+.about-column p {
     text-align: justify;
 }
 
@@ -44,4 +44,38 @@
     top: 0;
     right: 0;
     z-index: 1;
+}
+
+/* Media queries */
+/* Small screens (<= 600px) */
+@media (max-width: 600px) {
+    .about-elements {
+        flex-flow: column;
+    }
+
+    .about-column section {
+        max-width: fit-content;
+    }
+
+    .img-stack {
+        width: 100cqi;
+    }
+
+    .img-stack img {
+        width: 45cqi;
+    }
+
+    .lower {
+        top: 5em;
+        left: 0;
+    }
+
+    .higher {
+        top: 1em;
+        right: 25cqi;
+    }
+
+    .about {
+        padding-bottom: 20em;
+    }
 }
