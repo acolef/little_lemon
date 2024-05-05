@@ -61,11 +61,23 @@ const Footer = () => {
                     <div className="footer-links-section">
                         <section>
                             <h4>Contact</h4>
-                            <article>
-                                <p>Address</p>
-                                <p>Phone</p>
-                                <p>Email</p>
-                            </article>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Address
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Phone
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Email
+                                    </a>
+                                </li>
+                            </ul>
                         </section>
                     </div>
 

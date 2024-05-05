@@ -27,3 +27,15 @@
     list-style: none;
     padding-left: 0;
 }
+
+/* Media queries */
+/* Small screens (<= 600px) */
+@media (max-width: 600px) {
+    .footer-elements {
+        flex-direction: column-reverse;
+    }
+
+    .footer-links {
+        column-gap: 1.5em;
+    }
+}
