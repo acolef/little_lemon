@@ -18,3 +18,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* Media queries */
+/* Small screens (<= 600px) */
+@media (max-width: 600px) {
+    /* Stub */
+}

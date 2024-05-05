@@ -34,3 +34,11 @@ header {
     gap: 0 2cqi;
     padding-left: 0;
 }
+
+/* Media queries */
+/* Small screens (<= 600px) */
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+}

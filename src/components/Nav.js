@@ -48,6 +48,7 @@ const Navbar = () => {
                             );
                         })}
                     </ul>
+                    {/* TODO: Put hamburger menu svg here */}
                 </div>
             </nav>
         </header>
