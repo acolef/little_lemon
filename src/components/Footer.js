@@ -32,7 +32,7 @@ const socialmedia = ["Facebook", "Pinterest", "X"];
 
 const Footer = () => {
     return (
-        <footer className="footer-section">
+        <footer className="page-section footer-section">
             <div className="footer-elements content-wrapper">
                 <img
                     className="footer-img"
@@ -42,8 +42,8 @@ const Footer = () => {
                 <div className="footer-links">
                     <div className="footer-links-section">
                         <section>
-                            <ul>
-                                <nav role="navigation">
+                            <nav role="navigation">
+                                <ul>
                                     {links.map((data, i) => {
                                         return (
                                             <li key={i}>
@@ -53,8 +53,8 @@ const Footer = () => {
                                             </li>
                                         );
                                     })}
-                                </nav>
-                            </ul>
+                                </ul>
+                            </nav>
                         </section>
                     </div>
 

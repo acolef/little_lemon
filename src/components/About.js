@@ -25,12 +25,10 @@ const About = () => {
                 </div>
                 <div className="img-stack">
                     <img
-                        className="lower"
                         src={chef}
                         alt="A photograph of a whole fish on a flaming grill with potatoes, tomatoes, and lemon"
                     />
                     <img
-                        className="higher"
                         src={chefs}
                         alt="A photograph of two smiling chefs conversing"
                     />

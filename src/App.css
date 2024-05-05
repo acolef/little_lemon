@@ -18,12 +18,17 @@
     --content-width: 75%;
 }
 
+* {
+    border: 1px solid red;
+}
+
 /* A wrapper that prevents wrapped content from touching screen edges */
 .content-wrapper {
     width: var(--content-width);
     margin: 0 auto;
 }
 
+header,
 .page-section {
     width: 100%;
 }

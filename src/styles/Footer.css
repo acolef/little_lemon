@@ -7,15 +7,14 @@
 }
 
 .footer-section img {
-    max-width: 40em;
+    max-width: 25em;
     width: 100%;
 }
 
 .footer-elements {
     display: flex;
     justify-content: space-between;
-    gap: 4em;
-    width: 100%;
+    column-gap: 4em;
 }
 
 .footer-links {
@@ -36,6 +35,13 @@
     }
 
     .footer-links {
-        column-gap: 1.5em;
+        flex-direction: column;
+        row-gap: 1em;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section img {
+        max-width: 100%;
     }
 }
