@@ -22,5 +22,12 @@
 /* Media queries */
 /* Small screens (<= 600px) */
 @media (max-width: 600px) {
-    /* Stub */
+    .specials-row {
+        flex-direction: column;
+        row-gap: 1em;
+    }
+
+    .specials-elements {
+        row-gap: 1em;
+    }
 }

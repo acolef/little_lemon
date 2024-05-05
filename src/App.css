@@ -106,3 +106,31 @@ img {
 img[class] {
     border-radius: 0;
 }
+
+/* Button styling */
+button:not([class]) {
+    background-color: var(--primary-yellow);
+    border: none;
+    border-radius: 16px;
+    outline: 0 solid var(--primary-yellow);
+    font-family: Karla, sans-serif;
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 0.5em 1em;
+    letter-spacing: -1px;
+    text-wrap: nowrap;
+    transition: all 200ms ease-in-out;
+}
+
+button:not([class]):active {
+    background-color: var(--primary-green);
+    color: var(--highlight-gray);
+    outline-width: 5px;
+    outline-offset: -5px;
+}
+
+button.icon {
+    background-color: #ffffff;
+    border: none;
+    padding: 0;
+}

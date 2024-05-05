@@ -14,9 +14,9 @@ const Specials = () => {
                         </h2>
                     </section>
                     <section>
-                        <p>
-                            Button stub
-                        </p>
+                        <button>
+                            Online Menu
+                        </button>
                     </section>
                 </div>
                 <div className="specials-cards">

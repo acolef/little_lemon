@@ -22,9 +22,9 @@ const Hero = () => {
                         </p>
                     </section>
                     <section>
-                        <p>
-                            Button stub
-                        </p>
+                        <button>
+                            Reserve a Table
+                        </button>
                     </section>
                 </div>
                 <div className="breakout-img">

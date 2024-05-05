@@ -27,6 +27,11 @@ header {
     width: var(--content-width);
 }
 
+/* Hide hamburger menu icon for large screens */
+.nav-elements > button {
+    display: none;
+}
+
 /* The ul that contains the links */
 .nav-links {
     display: flex;
@@ -36,9 +41,35 @@ header {
 }
 
 /* Media queries */
-/* Small screens (<= 600px) */
+/* Extra small screens (< 600px) */
 @media (max-width: 600px) {
     .nav-links {
+        display: none;
+    }
+
+    .nav-elements > button {
+        display: flex;
+    }
+}
+
+/* Small screens (>= 600 px) */
+@media (min-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-elements > button {
+        display: flex;
+    }
+}
+
+/* Medium screens (>= 1200px) */
+@media (min-width: 1200px) {
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-elements > button {
         display: none;
     }
 }
