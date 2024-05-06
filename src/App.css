@@ -19,10 +19,6 @@
     --content-width-large: 75%;
 }
 
-* {
-    border: 1px solid red;
-}
-
 /* A wrapper that prevents wrapped content from touching screen edges */
 /* Default size applies for small and medium (< 992px) screens */
 .content-wrapper {

@@ -16,7 +16,13 @@
 
 .specials-cards {
     display: flex;
-    justify-content: space-between;
+    column-gap: 3em;
+    overflow-x: scroll;
+}
+
+/* Placeholders for the cards */
+.specials-cards p {
+    min-width: fit-content;
 }
 
 /* Media queries */

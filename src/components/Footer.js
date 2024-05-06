@@ -34,11 +34,13 @@ const Footer = () => {
     return (
         <footer className="page-section footer-section">
             <div className="footer-elements content-wrapper">
-                <img
-                    className="footer-img"
-                    src={restaurant}
-                    alt="An indoor photograph of the Little Lemon restaurant"
-                />
+                <div className="footer-img">
+                    <img
+                        className="footer-pic"
+                        src={restaurant}
+                        alt="An indoor photograph of the Little Lemon restaurant"
+                    />
+                </div>
                 <div className="footer-links">
                     <div className="footer-links-section">
                         <section>
