@@ -24,52 +24,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: var(--content-width);
+    width: var(--content-width-small-md);
 }
 
-/* Hide hamburger menu icon for large screens */
+/* Hide links behind hamburger menu icon for screens < 1200px */
 .nav-elements > button {
-    display: none;
+    display: flex;
 }
 
 /* The ul that contains the links */
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 0 2cqi;
-    padding-left: 0;
+    display: none;
 }
 
 /* Media queries */
-/* Extra small screens (< 600px) */
-@media (max-width: 600px) {
-    .nav-links {
-        display: none;
-    }
-
-    .nav-elements > button {
-        display: flex;
+/* Large screens (>992px) */
+@media (min-width: 992px) {
+    .nav-elements {
+        width: var(--content-width-large);
     }
 }
 
-/* Small screens (>= 600 px) */
-@media (min-width: 600px) {
-    .nav-links {
-        display: none;
-    }
-
-    .nav-elements > button {
-        display: flex;
-    }
-}
-
-/* Medium screens (>= 1200px) */
+/* Extra large screens (>1200px) */
 @media (min-width: 1200px) {
-    .nav-links {
-        display: flex;
+    .nav-elements {
+        width: var(--content-width-large);
     }
 
     .nav-elements > button {
         display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 0 2cqi;
+        padding-left: 0;
     }
 }

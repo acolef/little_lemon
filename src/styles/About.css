@@ -47,7 +47,7 @@
 }
 
 /* Media queries */
-/* Small screens (<= 600px) */
+/* Extra small screens (<= 600px) */
 @media (max-width: 600px) {
     .about-elements {
         flex-flow: column;

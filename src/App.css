@@ -15,7 +15,8 @@
     --secondary-peach: #FBDABB;
     --highlight-gray: #EDEFEE;
     --highlight-black: #333333;
-    --content-width: 75%;
+    --content-width-small-md: 90%;
+    --content-width-large: 75%;
 }
 
 * {
@@ -23,9 +24,16 @@
 }
 
 /* A wrapper that prevents wrapped content from touching screen edges */
+/* Default size applies for small and medium (< 992px) screens */
 .content-wrapper {
-    width: var(--content-width);
+    width: var(--content-width-small-md);
     margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .content-wrapper {
+        width: var(--content-width-large);
+    }
 }
 
 header,
