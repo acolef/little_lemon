@@ -128,7 +128,7 @@ button:not([class]) {
     padding: 0.5em 1em;
     letter-spacing: -1px;
     text-wrap: nowrap;
-    transition: all 200ms ease-in-out;
+    transition: all 100ms ease-in-out;
 }
 
 button:not([class]):active {
