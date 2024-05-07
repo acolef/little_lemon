@@ -1,5 +1,5 @@
-import '../styles/Footer.css';
-import restaurant from '../assets/restaurant.jpg';
+import '../../styles/Footer.css';
+import restaurant from '../../assets/restaurant.jpg';
 
 const links = [
     {

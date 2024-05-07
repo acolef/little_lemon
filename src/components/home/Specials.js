@@ -1,7 +1,4 @@
-import '../styles/Specials.css';
-import greeksalad from '../assets/greek_salad.jpg';
-import bruschetta from '../assets/bruschetta.jpg';
-import lemondessert from '../assets/lemon_dessert.jpeg';
+import '../../styles/Specials.css';
 
 const Specials = () => {
     return (
