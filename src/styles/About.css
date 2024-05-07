@@ -1,7 +1,7 @@
 @import '../App.css';
 
 .about {
-    padding-top: 5em;
+    padding-top: 8em;
     padding-bottom: 8em;
     background-color: var(--primary-green);
 }
@@ -48,7 +48,7 @@
 }
 
 /* Media queries */
-/* Medium screens (768px - 992px) */
+/* Large screens (> 992px) */
 @media (min-width: 992px) {
     .about-elements {
         flex-direction: row;
@@ -56,6 +56,10 @@
 
     .about-column section {
         max-width: 30em;
+    }
+
+    .img-stack {
+        margin-right: -2.5em;
     }
 
     .img-stack img {

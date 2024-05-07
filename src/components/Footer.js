@@ -101,6 +101,11 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+            <div className="copyright-container">
+                <p className="copyright">
+                    Copyright ⓒ Little Lemon
+                </p>
+            </div>
         </footer>
     );
 };

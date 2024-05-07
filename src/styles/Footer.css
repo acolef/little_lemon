@@ -28,6 +28,12 @@
     padding-left: 0;
 }
 
+.copyright-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+}
+
 /* Media queries */
 /* Small screens (<= 600px) */
 @media (max-width: 600px) {
