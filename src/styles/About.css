@@ -1,8 +1,8 @@
 @import '../App.css';
 
 .about {
-    padding-top: 8em;
-    padding-bottom: 8em;
+    padding-top: 10em;
+    padding-bottom: 10em;
     background-color: var(--primary-green);
 }
 
