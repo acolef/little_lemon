@@ -2,7 +2,7 @@ import '../../styles/About.css';
 import chef from '../../assets/chef.jpg';
 import chefs from '../../assets/marioandadrian.jpg';
 
-const description = ["Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit."];
+const description = ["Little Lemon is a stylish Mediterranean restaurant situated in the Chicago area. We have an extensive, healthy menu featuring only the finest fresh and organic ingredients. We offer reservations for a variety of occasions, and our site features convenient online ordering."];
 
 const About = () => {
     return (
@@ -27,7 +27,7 @@ const About = () => {
                     <img
                         className="about-pic"
                         src={chef}
-                        alt="A photograph of a whole fish on a flaming grill with potatoes, tomatoes, and lemon"
+                        alt="A chef preparing a salad"
                     />
                     <img
                         className="about-pic"
