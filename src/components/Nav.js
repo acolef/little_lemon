@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const links = [
     {
         info: "Home",
-        url: "#",
+        url: "/",
     },
     {
         info: "About",
-        url: "#",
+        url: "/about",
     },
     {
         info: "Menu",
@@ -17,7 +17,7 @@ const links = [
     },
     {
         info: "Reservations",
-        url: "#",
+        url: "/booking",
     },
     {
         info: "Order Online",
