@@ -1,5 +1,6 @@
 import '../../styles/Footer.css';
 import restaurant from '../../assets/restaurant.jpg';
+import { Link } from 'react-router-dom';
 
 const links = [
     {
@@ -49,9 +50,9 @@ const Footer = () => {
                                     {links.map((data, i) => {
                                         return (
                                             <li key={i}>
-                                                <a href={data.url}>
+                                                <Link to={data.url}>
                                                     {data.info}
-                                                </a>
+                                                </Link>
                                             </li>
                                         );
                                     })}
@@ -90,7 +91,11 @@ const Footer = () => {
                                     {socialmedia.map((data, i) => {
                                         return (
                                             <li key={i}>
-                                                <a href={`https://www.${data}.com`}>
+                                                <a
+                                                    href={`https://www.${data}.com`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
                                                     {data}
                                                 </a>
                                             </li>

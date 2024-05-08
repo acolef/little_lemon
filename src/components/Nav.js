@@ -1,5 +1,6 @@
 import '../styles/Nav.css';
 import logo from '../assets/Logo.png';
+import { Link } from 'react-router-dom';
 
 const links = [
     {
@@ -41,9 +42,9 @@ const Navbar = () => {
                         {links.map((data, i) => {
                             return (
                                 <li key={i}>
-                                    <a href={data.url}>
+                                    <Link to={data.url}>
                                         {data.info}
-                                    </a>
+                                    </Link>
                                 </li>
                             );
                         })}
