@@ -1,0 +1,35 @@
+@import '../../App.css';
+
+/* Font styling */
+h4.card {
+    color: #000000;
+}
+
+p.card-price {
+    font-weight: 500;
+    color: var(--secondary-salmon);
+}
+
+.special-card-description > p {
+    color: var(--primary-green);
+}
+
+/* Container styling */
+.special-card {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.special-card-text {
+    padding: 1em;
+    background-color: var(--highlight-gray);
+    display: flex;
+    flex-direction: column;
+    column-gap: 2em;
+}
+
+.special-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

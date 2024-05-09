@@ -73,12 +73,7 @@ p, a {
     line-height: 1.5em;
 }
 
-p.highlight {
-    font-weight: 500;
-    color: var(--secondary-salmon);
-}
-
-p.home, p.card {
+p.home {
     font-size: 18pt;
     font-weight: 500;
 }
@@ -92,12 +87,6 @@ p.copyright {
 h1 {
     font-size: 50pt;
     color: var(--primary-yellow);
-}
-
-h1.card {
-    font-size: 18pt;
-    font-weight: bold;
-    color: #000000;
 }
 
 h2 {
