@@ -27,7 +27,7 @@ const SpecialCard = props => {
                 </div>
             </div>
             <div className="special-card-delivery">
-                    <Link to="#">Order a delivery</Link>
+                <Link to="#">Order a delivery</Link>
             </div>
         </div>
     );
