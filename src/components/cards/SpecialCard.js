@@ -12,7 +12,7 @@ const SpecialCard = props => {
             <div className="special-card-text">
                 <div className="special-card-header">
                     <span>
-                        <h4 className="card">{props.specialName}</h4>
+                        <h4 className="card">{props.dish}</h4>
                     </span>
                     <span>
                         <p className="card-price">$ {props.price}</p>
@@ -20,7 +20,7 @@ const SpecialCard = props => {
                 </div>
                 <div className="special-card-description">
                     <p>
-                        {props.specialDescription}
+                        {props.description}
                     </p>
                 </div>
                 <div className="special-card-delivery">
