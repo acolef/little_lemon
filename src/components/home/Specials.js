@@ -2,6 +2,7 @@ import '../../styles/Specials.css';
 import greeksalad from '../../assets/greek_salad.jpg';
 import bruschetta from '../../assets/bruschetta.jpg';
 import lemondessert from '../../assets/lemon_dessert.jpeg';
+import SpecialCard from '../cards/SpecialCard';
 
 const weeklySpecials = [
     {
@@ -44,12 +45,20 @@ const Specials = () => {
                     </section>
                 </div>
                 <div className="specials-cards">
-                    <p>
-                        Special card stub
-                    </p>
-                    <p>
-                        Special card stub
-                    </p>
+                    <SpecialCard
+                        dish="Greek Salad"
+                        price="12.99"
+                        description="The famous Greek salad of crispy lettuce, peppers, olives, and our Chicago-style feta cheese, garnished with crunchy garlic and rosemary croutons."
+                        imgUrl={greeksalad}
+                        imgAlt="A Greek salad"
+                    />
+                    <SpecialCard
+                        dish="Test"
+                        price="12.99"
+                        description="This is a test!"
+                        imgUrl={greeksalad}
+                        imgAlt="A Greek salad"
+                    />
                     <p>
                         Special card stub
                     </p>

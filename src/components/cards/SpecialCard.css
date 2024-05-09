@@ -6,7 +6,7 @@ h4.card {
 }
 
 p.card-price {
-    font-weight: 500;
+    font-weight: bold;
     color: var(--secondary-salmon);
 }
 
@@ -16,20 +16,36 @@ p.card-price {
 
 /* Container styling */
 .special-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 600px;
+    background-color: var(--highlight-gray);
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
 }
 
 .special-card-text {
-    padding: 1em;
-    background-color: var(--highlight-gray);
+    padding: 1em 1em 0 1em;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
-    column-gap: 2em;
+    row-gap: 2em;
 }
 
 .special-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.special-card-img .card-img {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    width: 100%;
+}
+
+.special-card-delivery {
+    padding: 0 1em 1em 1em;
 }

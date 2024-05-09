@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import './SpecialCard.css';
 
 const SpecialCard = props => {
     return (
         <div className="special-card">
             <div className="special-card-img">
                 <img
+                    className="card-img"
                     src={props.imgUrl}
                     alt={props.imgAlt}
                 />
@@ -23,9 +25,9 @@ const SpecialCard = props => {
                         {props.description}
                     </p>
                 </div>
-                <div className="special-card-delivery">
+            </div>
+            <div className="special-card-delivery">
                     <Link to="#">Order a delivery</Link>
-                </div>
             </div>
         </div>
     );
