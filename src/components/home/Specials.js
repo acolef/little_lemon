@@ -45,23 +45,18 @@ const Specials = () => {
                     </section>
                 </div>
                 <div className="specials-cards">
-                    <SpecialCard
-                        dish="Greek Salad"
-                        price="12.99"
-                        description="The famous Greek salad of crispy lettuce, peppers, olives, and our Chicago-style feta cheese, garnished with crunchy garlic and rosemary croutons."
-                        imgUrl={greeksalad}
-                        imgAlt="A Greek salad"
-                    />
-                    <SpecialCard
-                        dish="Test"
-                        price="12.99"
-                        description="This is a test!"
-                        imgUrl={greeksalad}
-                        imgAlt="A Greek salad"
-                    />
-                    <p>
-                        Special card stub
-                    </p>
+                    {weeklySpecials.map((data, i) => {
+                        return (
+                            <SpecialCard
+                                key={i}
+                                dish={data.dish}
+                                price={data.price}
+                                description={data.description}
+                                imgUrl={data.imgUrl}
+                                imgAlt={data.imgAlt}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </section>
