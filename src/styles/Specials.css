@@ -15,12 +15,6 @@
     align-items: center;
 }
 
-.specials-cards {
-    display: flex;
-    column-gap: 3em;
-    overflow-x: scroll;
-}
-
 /* Placeholders for the cards */
 .specials-cards p {
     min-width: fit-content;

@@ -1,0 +1,13 @@
+.horizontal-scroller {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    column-gap: 3em;
+    scrollbar-width: 0; /* Hides scrollbar in Edge, Firefox, and Chrome */
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* Hides scrollbar in IE and Edge */
+}
+
+.horizontal-scroller::-webkit-scrollbar {
+    display: none; /* Hides scrollbar in Chrome, Safari, and Edge */
+}

@@ -3,6 +3,7 @@ import greeksalad from '../../assets/greek_salad.jpg';
 import bruschetta from '../../assets/bruschetta.jpg';
 import lemondessert from '../../assets/lemon_dessert.jpeg';
 import SpecialCard from '../cards/SpecialCard';
+import HorizontalScroll from '../cards/HorizontalScroll';
 
 const weeklySpecials = [
     {
@@ -44,7 +45,7 @@ const Specials = () => {
                         </button>
                     </section>
                 </div>
-                <div className="specials-cards">
+                <HorizontalScroll>
                     {weeklySpecials.map((data, i) => {
                         return (
                             <SpecialCard
@@ -57,7 +58,7 @@ const Specials = () => {
                             />
                         );
                     })}
-                </div>
+                </HorizontalScroll>
             </div>
         </section>
     );
