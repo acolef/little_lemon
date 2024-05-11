@@ -1,33 +1,7 @@
 import '../../styles/Footer.css';
 import restaurant from '../../assets/restaurant.jpg';
 import { Link } from 'react-router-dom';
-
-const links = [
-    {
-        info: "Home",
-        url: "/",
-    },
-    {
-        info: "About",
-        url: "/about",
-    },
-    {
-        info: "Menu",
-        url: "#",
-    },
-    {
-        info: "Reservations",
-        url: "/booking",
-    },
-    {
-        info: "Order Online",
-        url: "#",
-    },
-    {
-        info: "Login",
-        url: "#",
-    },
-];
+import { links } from '../Nav';
 
 const socialmedia = ["Facebook", "Pinterest", "X"];
 

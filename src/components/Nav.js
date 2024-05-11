@@ -2,7 +2,7 @@ import '../styles/Nav.css';
 import logo from '../assets/Logo.png';
 import { Link } from 'react-router-dom';
 
-const links = [
+export const links = [
     {
         info: "Home",
         url: "/",
