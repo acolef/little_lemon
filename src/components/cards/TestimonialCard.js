@@ -10,7 +10,6 @@ const TestimonialCard = props => {
             <div className="testimonial-rating">
                 {starRating.map((i) =>
                     <img
-                        className="star"
                         key={i}
                         src={star}
                         alt={`Star ${i}`}
@@ -26,7 +25,7 @@ const TestimonialCard = props => {
                 </span>
             </div>
             <div className="testimonial-review">
-                <p>{props.review}</p>
+                <p>"{props.review}"</p>
             </div>
         </div>
     );

@@ -3,6 +3,7 @@
 /* Font styling */
 .testimonial-review > p {
     color: #000000;
+    text-align: center;
 }
 
 /* Container styling */
@@ -12,6 +13,7 @@
     flex: 1;
     max-width: 350px;
     background-color: #ffffff;
+    border-radius: 16px;
 }
 
 .testimonial-rating {
@@ -21,12 +23,14 @@
 }
 
 .testimonial-rating img {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(3px 2px 1px var(--primary-green))
 }
 
 .testimonial-person {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 0 1em 1em 1em;
 }
@@ -37,11 +41,10 @@
 
 .testimonial-person-img > img {
     border-radius: 50%;
-    width: 75%;
+    width: 150px;
 }
 
 .testimonial-review {
     display: flex;
-    justify-content: center;
     padding: 0 1em 2em 1em;
 }
