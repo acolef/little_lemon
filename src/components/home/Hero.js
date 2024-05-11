@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../../styles/Hero.css';
 import heroImage from '../../assets/restaurantfood-min.jpg';
 
@@ -22,9 +23,11 @@ const Hero = () => {
                         </p>
                     </section>
                     <section>
-                        <button>
-                            Reserve a Table
-                        </button>
+                        <Link to="/booking">
+                            <button>
+                                Reserve a table
+                            </button>
+                        </Link>
                     </section>
                 </div>
                 <div className="breakout-img">
