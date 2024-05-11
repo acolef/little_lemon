@@ -1,10 +1,6 @@
 @import '../../App.css';
 
 /* Font styling */
-h4.card {
-    color: #000000;
-}
-
 p.card-price {
     font-weight: bold;
     color: var(--secondary-salmon);

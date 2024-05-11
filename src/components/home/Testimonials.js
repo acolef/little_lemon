@@ -1,4 +1,42 @@
+import TestimonialCard from '../cards/TestimonialCard';
+import johnny from '../../assets/johnny.jpeg';
+import flora from '../../assets/flora.jpeg';
+import luna from '../../assets/luna.jpeg';
+import matt from '../../assets/matt.jpeg';
 import '../../styles/Testimonials.css';
+
+const altText = "A customer's portrait";
+
+const testimonials = [
+    {
+        name: "Johnny",
+        rating: 5,
+        imgUrl: johnny,
+        imgAlt: altText,
+        review: "The food here is unbelievable, and I love Little Lemon's atmosphere!",
+    },
+    {
+        name: "Flora",
+        rating: 5,
+        imgUrl: flora,
+        imgAlt: altText,
+        review: "Delicious food and great service.",
+    },
+    {
+        name: "Luna",
+        rating: 5,
+        imgUrl: luna,
+        imgAlt: altText,
+        review: "I go to Little Lemon all the time! The food is always amazing, and the staff are so friendly.",
+    },
+    {
+        name: "Matt",
+        rating: 5,
+        imgUrl: matt,
+        imgAlt: altText,
+        review: "Whether I eat in or order online, this place delivers an excellent experience.",
+    }
+];
 
 const Testimonials = () => {
     return (
@@ -12,10 +50,18 @@ const Testimonials = () => {
                     </section>
                 </div>
                 <div className="testimonials-cards">
-                    <p>Card stub</p>
-                    <p>Card stub</p>
-                    <p>Card stub</p>
-                    <p>Card stub</p>
+                    {testimonials.map((data, i) => {
+                        return (
+                            <TestimonialCard
+                                key={i}
+                                name={data.name}
+                                rating={data.rating}
+                                imgUrl={data.imgUrl}
+                                imgAlt={data.imgAlt}
+                                review={data.review}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </section>

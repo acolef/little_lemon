@@ -1,0 +1,47 @@
+@import '../../App.css';
+
+/* Font styling */
+.testimonial-review > p {
+    color: #000000;
+}
+
+/* Container styling */
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 350px;
+    background-color: #ffffff;
+}
+
+.testimonial-rating {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2em 1em 1em 1em;
+}
+
+.testimonial-rating img {
+    width: 24px;
+    height: 24px;
+}
+
+.testimonial-person {
+    display: flex;
+    align-items: center;
+    padding: 0 1em 1em 1em;
+}
+
+.testimonial-person-img {
+    display: flex;
+}
+
+.testimonial-person-img > img {
+    border-radius: 50%;
+    width: 75%;
+}
+
+.testimonial-review {
+    display: flex;
+    justify-content: center;
+    padding: 0 1em 2em 1em;
+}
