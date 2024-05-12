@@ -9,6 +9,7 @@ const altText = "A customer's portrait";
 
 const testimonials = [
     {
+        id: "t1",
         name: "Johnny",
         rating: 5,
         imgUrl: johnny,
@@ -16,6 +17,7 @@ const testimonials = [
         review: "The food here is unbelievable, and I love Little Lemon's atmosphere!",
     },
     {
+        id: "t2",
         name: "Flora",
         rating: 5,
         imgUrl: flora,
@@ -23,6 +25,7 @@ const testimonials = [
         review: "Delicious food and great service.",
     },
     {
+        id: "t3",
         name: "Luna",
         rating: 5,
         imgUrl: luna,
@@ -30,12 +33,13 @@ const testimonials = [
         review: "I go to Little Lemon all the time! The food is always amazing, and the staff are so friendly.",
     },
     {
+        id: "t4",
         name: "Matt",
         rating: 5,
         imgUrl: matt,
         imgAlt: altText,
         review: "Whether I eat in or order online, this place delivers an excellent experience.",
-    }
+    },
 ];
 
 const Testimonials = () => {
@@ -50,10 +54,10 @@ const Testimonials = () => {
                     </section>
                 </div>
                 <div className="testimonials-cards">
-                    {testimonials.map((data, i) => {
+                    {testimonials.map((data) => {
                         return (
                             <TestimonialCard
-                                key={i}
+                                key={data.id}
                                 name={data.name}
                                 rating={data.rating}
                                 imgUrl={data.imgUrl}

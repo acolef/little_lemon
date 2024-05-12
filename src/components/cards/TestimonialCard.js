@@ -8,9 +8,9 @@ const TestimonialCard = props => {
     return (
         <div className="testimonial-card">
             <div className="testimonial-rating">
-                {starRating.map((i) =>
+                {starRating.map((_, i) =>
                     <img
-                        key={i}
+                        key={`star-${i}`}
                         src={star}
                         alt={`Star ${i}`}
                     />

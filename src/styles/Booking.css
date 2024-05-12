@@ -1,3 +1,5 @@
 .booking {
     padding-top: 8em;
+    padding-bottom: 10em;
+    background-color: var(--secondary-peach);
 }
