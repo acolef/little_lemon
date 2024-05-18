@@ -14,11 +14,14 @@ label, select {
 input {
     font-family: Karla, sans-serif;
     font-size: 16pt;
-    margin: 0.2em;
+    margin: 0.3em;
+    transition: box-shadow 200ms ease-in-out;
+}
+
+input:not([type="range"]) {
     background: linear-gradient(var(--secondary-salmon) 0 0) left 0% / 0% 100% no-repeat,
                 var(--highlight-gray) left 0% / 100% 100% no-repeat;
-    transition: box-shadow 200ms ease-in-out,
-                background-size 200ms ease-in-out;
+    transition: background-size 200ms ease-in-out;
 }
 
 select {
@@ -47,6 +50,7 @@ input:focus {
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
+    background-color: var(--highlight-gray);
     height: 8px;
     border: 1px solid var(--highlight-black);
     border-radius: 4px;
@@ -64,12 +68,17 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 30px;
     height: 30px;
     background: url('../assets/Lemon.png');
     background-size: cover;
     border: none;
     filter: drop-shadow(2px 2px 3px var(--highlight-black));
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--primary-yellow);
 }
 
 /* Firefox */
@@ -88,4 +97,8 @@ input[type="range"]::-moz-range-thumb {
     background-size: cover;
     border: none;
     filter: drop-shadow(2px 2px 3px var(--highlight-black));
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: var(--primary-yellow);
 }
