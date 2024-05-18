@@ -19,6 +19,13 @@
     --content-width-large: 75%;
 }
 
+/* A modern best practice */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* A wrapper that prevents wrapped content from touching screen edges */
 /* Default size applies for small and medium (< 992px) screens */
 .content-wrapper {

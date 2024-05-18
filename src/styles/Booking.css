@@ -3,3 +3,58 @@
     padding-bottom: 10em;
     background-color: var(--secondary-peach);
 }
+
+label, input, select {
+    font-family: Karla, sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+    margin: 0.2em;
+}
+
+input {
+    background: linear-gradient(var(--secondary-salmon) 0 0) left 0% / 0% 100% no-repeat,
+                var(--highlight-gray) left 0% / 100% 100% no-repeat;
+    transition: box-shadow 200ms ease-in-out,
+                background-size 200ms ease-in-out;
+}
+
+select {
+    background-color: var(--highlight-gray);
+    transition: box-shadow 200ms ease-in-out;
+}
+
+input:not([type="range"]), select {
+    border: 1px solid var(--highlight-black);
+    border-radius: 16px;
+    padding: 0.25em 0.6em;
+}
+
+select:focus, select:hover, input[type="submit"]:hover {
+    background-color: var(--secondary-salmon);
+}
+
+input:focus {
+    background-size: 100% 100%;
+    outline: 3px solid transparent;
+    box-shadow: 0 0 3px 1px var(--highlight-black);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border: 1px solid var(--highlight-black);
+    border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: url('../assets/Lemon.png');
+    background-size: cover;
+    border: none;
+    filter: drop-shadow(2px 2px 3px var(--highlight-black));
+}
