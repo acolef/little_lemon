@@ -18,6 +18,10 @@ input {
     margin: 0.3em;
 }
 
+input[type="range"] {
+    margin: 0.7em 0.3em;
+}
+
 input:not([type="range"]) {
     background: linear-gradient(var(--secondary-salmon) 0 0) left 0% / 0% 100% no-repeat,
                 var(--highlight-gray) left 0% / 100% 100% no-repeat;

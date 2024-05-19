@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../../styles/Booking.css';
 
 const BookingForm = () => {
-
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState("");
     const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
     const [time, setTime] = useState("17:00");
-    const [guests, setGuests] = useState(1);
+    const [guests, setGuests] = useState(4);
     const [occasion, setOccasion] = useState("Birthday");
 
     const handleFnameChange = (e) => {
@@ -38,6 +37,23 @@ const BookingForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+
+    // Gets current date, formats it, and passes it to stateful date variable
+    useEffect(() => {
+        // Get current date
+        const currentDate = new Date();
+
+        // Break date up
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth() + 1; // Add 1 because getMonth() uses a 0-based array (i.e., Jan -> 0th month)
+        const currentYear = currentDate.getFullYear();
+
+        // Format date to initialize stateful date variable
+        // HTML date input understands format YYYY-MM-DD
+        const formattedDate = `${currentYear.toString()}-${currentMonth.toString().padStart(2, '0')}-${currentDay.toString().padStart(2, '0')}`;
+
+        setDate(formattedDate);
+    }, []);
 
     return (
         <form>
@@ -74,15 +90,16 @@ const BookingForm = () => {
                 value={time}
                 onChange={handleTimeChange}
             >
-                {availableTimes.map((time) => {
+                {availableTimes.map((time, i) => {
                     return(
-                        <option>{time}</option>
+                        <option key={i}>{time}</option>
                     );
                 })}
             </select>
             <br />
 
-            <label htmlFor="res-guests">Number of guests </label>
+            <label htmlFor="res-guests">Number of guests ({guests})</label>
+            <br />
             <input
                 id="res-guests"
                 type="range"
