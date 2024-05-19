@@ -140,6 +140,15 @@ button:not([class]):active {
     outline-offset: -5px;
 }
 
+button:not([class]):disabled {
+    background-color: var(--highlight-gray);
+}
+
+button:not([class]):disabled:active {
+    color: var(--highlight-black);
+    outline-color: hsl(0 80% 60%);
+}
+
 button.icon {
     background-color: #ffffff;
     border: none;

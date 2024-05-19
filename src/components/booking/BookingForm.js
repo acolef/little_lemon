@@ -6,7 +6,7 @@ const BookingForm = () => {
     const [lname, setLname] = useState("");
     const [date, setDate] = useState("");
     const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
-    const [time, setTime] = useState("17:00");
+    const [time, setTime] = useState(availableTimes[0]);
     const [guests, setGuests] = useState(4);
     const [occasion, setOccasion] = useState("Birthday");
 
@@ -36,6 +36,13 @@ const BookingForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Reset fields
+        setFname("");
+        setLname("");
+        setTime(availableTimes[0]);
+        setGuests(4);
+        setOccasion("Birthday");
     };
 
     // Gets current date, formats it, and passes it to stateful date variable
@@ -49,14 +56,14 @@ const BookingForm = () => {
         const currentYear = currentDate.getFullYear();
 
         // Format date to initialize stateful date variable
-        // HTML date input understands format YYYY-MM-DD
+        // (HTML date input understands format YYYY-MM-DD)
         const formattedDate = `${currentYear.toString()}-${currentMonth.toString().padStart(2, '0')}-${currentDay.toString().padStart(2, '0')}`;
 
         setDate(formattedDate);
     }, []);
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="res-fname">First name </label>
             <input
                 id="res-fname"
@@ -122,7 +129,7 @@ const BookingForm = () => {
             </select>
             <br />
 
-            <button type="submit" onSubmit={handleSubmit}>
+            <button type="submit">
                 Make your reservation
             </button>
         </form>
