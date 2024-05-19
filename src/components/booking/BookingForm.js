@@ -2,51 +2,46 @@ import { useState, useEffect } from 'react';
 import '../../styles/Booking.css';
 
 const BookingForm = () => {
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
-    const [date, setDate] = useState("");
     const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
-    const [time, setTime] = useState(availableTimes[0]);
-    const [guests, setGuests] = useState(4);
-    const [occasion, setOccasion] = useState("Birthday");
+    const [formData, setFormData] = useState({
+        fname: "",
+        lname: "",
+        date: "",
+        time: availableTimes[0],
+        guests: 4,
+        occasion: "Birthday",
+    });
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
-    const handleFnameChange = (e) => {
-        setFname(e.target.value);
-    };
-
-    const handleLnameChange = (e) => {
-        setLname(e.target.value);
-    };
-
-    const handleDateChange = (e) => {
-        setDate(e.target.value);
-    };
-
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
-    };
-
-    const handleGuestsChange = (e) => {
-        setGuests(Number(e.target.value));
-    };
-
-    const handleOccasionChange = (e) => {
-        setOccasion(e.target.value);
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Reset fields
-        setFname("");
-        setLname("");
-        setTime(availableTimes[0]);
-        setGuests(4);
-        setOccasion("Birthday");
+        setFormData({
+            fname: "",
+            lname: "",
+            date: "",
+            time: availableTimes[0],
+            guests: 4,
+            occasion: "Birthday",
+        });
+
+        setFormSubmitted(true);
     };
 
-    // Gets current date, formats it, and passes it to stateful date variable
+    /* Gets current date, formats it, and passes it to stateful date variable
+     * Also ensures that initial guest amount displays on page load
+     * formSubmitted dependency ensures date input is repopulated with current date
+     * upon form submission
+     */
     useEffect(() => {
+        // Reset formSubmitted to false
+        setFormSubmitted(false);
+
         // Get current date
         const currentDate = new Date();
 
@@ -59,69 +54,75 @@ const BookingForm = () => {
         // (HTML date input understands format YYYY-MM-DD)
         const formattedDate = `${currentYear.toString()}-${currentMonth.toString().padStart(2, '0')}-${currentDay.toString().padStart(2, '0')}`;
 
-        setDate(formattedDate);
-    }, []);
+        setFormData({ guests: 4, date: formattedDate });
+    }, [formSubmitted]);
 
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="res-fname">First name </label>
             <input
+                name="fname"
                 id="res-fname"
                 type="text"
-                value={fname}
-                onChange={handleFnameChange}
+                value={formData.fname}
+                onChange={handleChange}
             />
             <br />
 
             <label htmlFor="res-lname">Last name </label>
             <input
+                name="lname"
                 id="res-lname"
                 type="text"
-                value={lname}
-                onChange={handleLnameChange}
+                value={formData.lname}
+                onChange={handleChange}
             />
             <br />
 
             <label htmlFor="res-date">Date </label>
             <input
+                name="date"
                 id="res-date"
                 type="date"
-                value={date}
-                onChange={handleDateChange}
+                value={formData.date}
+                onChange={handleChange}
             />
             <br />
 
             <label htmlFor="res-time">Time </label>
             <select
+                name="time"
                 id="res-time"
-                value={time}
-                onChange={handleTimeChange}
+                value={formData.time}
+                onChange={handleChange}
             >
                 {availableTimes.map((time, i) => {
-                    return(
+                    return (
                         <option key={i}>{time}</option>
                     );
                 })}
             </select>
             <br />
 
-            <label htmlFor="res-guests">Number of guests ({guests})</label>
+            <label htmlFor="res-guests">Number of guests ({formData.guests})</label>
             <br />
             <input
+                name="guests"
                 id="res-guests"
                 type="range"
                 min="1"
                 max="10"
-                value={guests}
-                onChange={handleGuestsChange}
+                value={formData.guests}
+                onChange={handleChange}
             />
             <br />
 
             <label htmlFor="res-occasion">Occasion </label>
             <select
+                name="occasion"
                 id="res-occasion"
-                value={occasion}
-                onChange={handleOccasionChange}
+                value={formData.occasion}
+                onChange={handleChange}
             >
                 <option>Birthday</option>
                 <option>Anniversary</option>
