@@ -4,7 +4,8 @@
     background-color: var(--secondary-peach);
 }
 
-label, select {
+label,
+select {
     font-family: Karla, sans-serif;
     font-weight: bold;
     font-size: 16pt;
@@ -15,29 +16,28 @@ input {
     font-family: Karla, sans-serif;
     font-size: 16pt;
     margin: 0.3em;
-    transition: box-shadow 200ms ease-in-out;
 }
 
 input:not([type="range"]) {
     background: linear-gradient(var(--secondary-salmon) 0 0) left 0% / 0% 100% no-repeat,
                 var(--highlight-gray) left 0% / 100% 100% no-repeat;
-    transition: background-size 200ms ease-in-out;
+    transition: background-size 200ms ease-in-out,
+                box-shadow 200ms ease-in-out;
 }
 
 select {
     background-color: var(--highlight-gray);
-    transition: box-shadow 200ms ease-in-out;
 }
 
-input:not([type="range"]), select {
+input:not([type="range"]),
+select {
     border: 1px solid var(--highlight-black);
     border-radius: 16px;
     padding: 0.25em 0.6em;
 }
 
 select:focus,
-select:hover,
-input[type="submit"]:hover {
+select:hover {
     background-color: var(--secondary-salmon);
 }
 
@@ -47,23 +47,16 @@ input:focus {
     box-shadow: 0 0 3px 1px var(--highlight-black);
 }
 
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--highlight-gray);
-    height: 8px;
-    border: 1px solid var(--highlight-black);
-    border-radius: 4px;
-}
-
 /* Chromium, &c. */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
+    background-color: var(--highlight-gray);
     width: 200px;
     height: 8px;
     border: 1px solid var(--highlight-black);
     border-radius: 4px;
+    transition: box-shadow 200ms ease-in-out;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -84,9 +77,12 @@ input[type="range"]::-webkit-slider-runnable-track {
 /* Firefox */
 input[type="range"] {
     appearance: none;
+    background-color: var(--highlight-gray);
+    width: 200px;
     height: 8px;
     border: 1px solid var(--highlight-black);
     border-radius: 4px;
+    transition: box-shadow 200ms ease-in-out;
 }
 
 input[type="range"]::-moz-range-thumb {
