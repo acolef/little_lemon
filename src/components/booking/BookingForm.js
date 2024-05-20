@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/Booking.css';
 
-const BookingForm = () => {
-    const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
+const BookingForm = ({ availableTimes, dispatch }) => {
     const [formData, setFormData] = useState({
         fname: "",
         lname: "",
@@ -85,7 +84,10 @@ const BookingForm = () => {
                 id="res-date"
                 type="date"
                 value={formData.date}
-                onChange={handleChange}
+                onChange={(e) => {
+                    handleChange(e);
+                    dispatch(e.target.value);
+                }}
             />
             <br />
 
