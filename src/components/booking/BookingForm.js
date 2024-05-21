@@ -46,7 +46,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
 
         // Break date up
         const currentDay = currentDate.getDate();
-        const currentMonth = currentDate.getMonth() + 1; // Add 1 because getMonth() uses a 0-based array (i.e., Jan -> 0th month)
+        const currentMonth = currentDate.getMonth() + 1; // Add 1 because getMonth() uses a 0-based array (e.g., Jan -> 0th month)
         const currentYear = currentDate.getFullYear();
 
         // Format date to initialize stateful date variable
@@ -58,31 +58,37 @@ const BookingForm = ({ availableTimes, dispatch }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="res-fname">First name </label>
+            <label htmlFor="res-fname" id="fnameLabel">First name </label>
             <input
                 name="fname"
                 id="res-fname"
                 type="text"
+                aria-labelledby="fnameLabel"
+                aria-required="true"
                 value={formData.fname}
                 onChange={handleChange}
             />
             <br />
 
-            <label htmlFor="res-lname">Last name </label>
+            <label htmlFor="res-lname" id="lnameLabel">Last name </label>
             <input
                 name="lname"
                 id="res-lname"
                 type="text"
+                aria-labelledby="lnameLabel"
+                aria-required="true"
                 value={formData.lname}
                 onChange={handleChange}
             />
             <br />
 
-            <label htmlFor="res-date">Date </label>
+            <label htmlFor="res-date" id="reservationDate">Date </label>
             <input
                 name="date"
                 id="res-date"
                 type="date"
+                aria-labelledby="reservationDate"
+                aria-required="true"
                 value={formData.date}
                 onChange={(e) => {
                     handleChange(e);
@@ -91,10 +97,12 @@ const BookingForm = ({ availableTimes, dispatch }) => {
             />
             <br />
 
-            <label htmlFor="res-time">Time </label>
+            <label htmlFor="res-time" id="reservationTime">Time </label>
             <select
                 name="time"
                 id="res-time"
+                aria-labelledby="reservationTime"
+                aria-required="true"
                 value={formData.time}
                 onChange={handleChange}
             >
@@ -106,7 +114,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
             </select>
             <br />
 
-            <label htmlFor="res-guests">Number of guests ({formData.guests})</label>
+            <label htmlFor="res-guests" id="numGuests">Number of guests ({formData.guests})</label>
             <br />
             <input
                 name="guests"
@@ -114,15 +122,19 @@ const BookingForm = ({ availableTimes, dispatch }) => {
                 type="range"
                 min="1"
                 max="10"
+                aria-labelledby="numGuests"
+                aria-required="true"
                 value={formData.guests}
                 onChange={handleChange}
             />
             <br />
 
-            <label htmlFor="res-occasion">Occasion </label>
+            <label htmlFor="res-occasion" id="occasion">Occasion </label>
             <select
                 name="occasion"
                 id="res-occasion"
+                aria-labelledby="occasion"
+                aria-required="true"
                 value={formData.occasion}
                 onChange={handleChange}
             >
@@ -132,7 +144,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
             </select>
             <br />
 
-            <button type="submit">
+            <button type="submit" aria-label="Make your reservation">
                 Make your reservation
             </button>
         </form>

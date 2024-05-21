@@ -4,6 +4,7 @@ import '../../styles/Booking.css';
 import pasta from '../../assets/pasta.jpg';
 
 const Booking = () => {
+    // Reducer function - adds "16:00" to availableTimes upon date form field change
     const updateTimes = (state, date) => {
         switch (date) {
             default:
@@ -19,7 +20,7 @@ const Booking = () => {
         );
     };
 
-    // Note: must call initializeTimes() as a function so it returns initial state
+    // Must call initializeTimes() as a function so it returns initial state
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
     return (
