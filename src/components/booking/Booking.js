@@ -3,23 +3,23 @@ import BookingForm from './BookingForm';
 import '../../styles/Booking.css';
 import pasta from '../../assets/pasta.jpg';
 
+// Reducer function - adds "16:00" to availableTimes upon date form field change
+const updateTimes = (state, date) => {
+    switch (date) {
+        default:
+            return (
+                { times: ["16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
+            );
+    };
+};
+
+const initializeTimes = () => {
+    return (
+        { times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
+    );
+};
+
 const Booking = () => {
-    // Reducer function - adds "16:00" to availableTimes upon date form field change
-    const updateTimes = (state, date) => {
-        switch (date) {
-            default:
-                return (
-                    { times: ["16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
-                );
-        }
-    };
-
-    const initializeTimes = () => {
-        return (
-            { times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
-        );
-    };
-
     // Must call initializeTimes() as a function so it returns initial state
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
@@ -41,3 +41,4 @@ const Booking = () => {
 };
 
 export default Booking;
+export { initializeTimes, updateTimes };
