@@ -39,10 +39,13 @@ describe('Booking and BookingForm tests', () => {
   });
 
   test('Validates behavior of initializeTimes() and updateTimes() reducer function', () => {
+    // Default state value for times property
+    const timesStateValue = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+
     // Checks value returned by initializeTimes()
-    expect(initializeTimes()).toEqual({ times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] });
+    expect(initializeTimes()).toEqual({ times: timesStateValue });
 
     // Checks that updateTimes() reducer function returns correct value
-    expect(updateTimes()).toEqual({ times: ["16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] })
+    expect(updateTimes()).toEqual({ times: ["16:00", ...timesStateValue] });
   });
 });
