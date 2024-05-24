@@ -48,4 +48,44 @@ describe('Booking and BookingForm tests', () => {
     // Checks that updateTimes() reducer function returns correct value
     expect(updateTimes()).toEqual({ times: ["16:00", ...timesStateValue] });
   });
+
+  test('Tests valid form submission', () => {
+    const mockAvailableTimes = { times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] };
+
+    render(<BookingForm availableTimes={mockAvailableTimes.times} dispatch={jest.fn()} />);
+
+    // Fill out form
+    const fnameInput = screen.getByLabelText("First name");
+    fireEvent.change(fnameInput, { target: { value: "Tester" } });
+
+    const lnameInput = screen.getByLabelText("Last name");
+    fireEvent.change(lnameInput, { target: { value: "Tester" } });
+
+    const dateInput = screen.getByLabelText("Date");
+    fireEvent.change(dateInput, { target: { value: "2025-05-24" } }); // HTML understands YYYY-MM-DD
+
+    const timeInput = screen.getByLabelText("Time");
+    fireEvent.change(timeInput, { target: { value: mockAvailableTimes.times[1] } }); // "18:00"
+
+    const guestsInput = screen.getByLabelText(/Number of guests \(\d+\)/);
+    fireEvent.change(guestsInput, { target: { value: 8 } });
+
+    const occasionInput = screen.getByLabelText("Occasion");
+    fireEvent.change(occasionInput, { target: { value: "Anniversary" } });
+
+    // Submit and clear form
+    const submitBtn = screen.getByText("Make your reservation");
+    fireEvent.click(submitBtn);
+
+    // Check that form was cleared
+    const reservationForm = screen.getByTestId("res-form");
+    expect(reservationForm).toHaveFormValues({
+      fname: "",
+      lname: "",
+      date: "2024-05-24", // Use today's date
+      time: mockAvailableTimes.times[0], // "17:00"
+      guests: "4",
+      occasion: "Birthday",
+    });
+  });
 });

@@ -57,7 +57,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
     }, [formSubmitted]);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="res-form">
             <label htmlFor="res-fname" id="fnameLabel">First name </label>
             <input
                 name="fname"
@@ -144,7 +144,10 @@ const BookingForm = ({ availableTimes, dispatch }) => {
             </select>
             <br />
 
-            <button type="submit" aria-label="Make your reservation">
+            <button
+                type="submit"
+                aria-label="Make your reservation"
+            >
                 Make your reservation
             </button>
         </form>
