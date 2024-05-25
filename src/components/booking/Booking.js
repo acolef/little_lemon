@@ -1,21 +1,23 @@
 import { useState, useReducer } from 'react';
 import BookingForm from './BookingForm';
 import '../../styles/Booking.css';
+import { fetchAPI, submitAPI } from '../../api';
 import pasta from '../../assets/pasta.jpg';
 
-// Reducer function - adds "16:00" to availableTimes upon date form field change
-const updateTimes = (state, date) => {
-    switch (date) {
-        default:
-            return (
-                { times: ["16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
-            );
-    };
+// Reducer function - changes available reservation times based on selected date
+const updateTimes = (_, action) => {
+    const newDate = new Date(action.payload.date);
+
+    return (
+        fetchAPI(newDate)
+    );
 };
 
 const initializeTimes = () => {
+    const today = new Date();
+
     return (
-        { times: ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"] }
+        fetchAPI(today)
     );
 };
 
@@ -31,7 +33,7 @@ const Booking = () => {
                 </div>
                 <div className="booking-form">
                     <BookingForm
-                        availableTimes={availableTimes.times}
+                        availableTimes={availableTimes}
                         dispatch={dispatch}
                     />
                 </div>

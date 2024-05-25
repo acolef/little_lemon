@@ -92,7 +92,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
                 value={formData.date}
                 onChange={(e) => {
                     handleChange(e);
-                    dispatch(e.target.value);
+                    dispatch({ payload: { date: e.target.value } });
                 }}
             />
             <br />
