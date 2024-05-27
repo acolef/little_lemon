@@ -1,6 +1,7 @@
 import '../styles/Nav.css';
 import logo from '../assets/Logo.png';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export const links = [
     {
@@ -29,7 +30,50 @@ export const links = [
     },
 ];
 
+const linksList = links.map((data, i) => {
+    return (
+        <li key={i}>
+            <Link to={data.url}>
+                {data.info}
+            </Link>
+        </li>
+    );
+});
+
 const Navbar = () => {
+    // Tracks if hamburger menu has been opened
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Toggles menu upon clicking hamburger icon
+    const toggleMenu = (e) => {
+        e.stopPropagation(); // Prevents window from closing menu due to bubbling
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    // Closes menu when user clicks outside of it
+    useEffect(() => {
+        const handleClick = (e) => {
+            // Represents open hamburger menu
+            const hamburgerMenu = document.querySelector(".hamburger-menu.open");
+
+            let clickLocation = e.target;
+
+            do {
+                if (clickLocation == hamburgerMenu)
+                    return; // do nothing if click is anywhere inside menu
+                clickLocation = clickLocation.parentNode;
+            } while (clickLocation); // loop through parent elements of target
+
+            setIsMenuOpen(false); // close menu otherwise
+        };
+
+        window.addEventListener('click', handleClick);
+
+        return () => {
+            window.removeEventListener('click', handleClick);
+        };
+    }, []);
+
     return (
         <header>
             <nav className="navbar" role="navigation">
@@ -39,17 +83,9 @@ const Navbar = () => {
                         alt="Little Lemon restaurant logo"
                     />
                     <ul className="nav-links">
-                        {links.map((data, i) => {
-                            return (
-                                <li key={i}>
-                                    <Link to={data.url}>
-                                        {data.info}
-                                    </Link>
-                                </li>
-                            );
-                        })}
+                        {linksList}
                     </ul>
-                    <button className="icon">
+                    <button className="hamburger" onClick={toggleMenu}>
                         <svg
                             width="35"
                             height="25"
@@ -65,6 +101,11 @@ const Navbar = () => {
                             />
                         </svg>
                     </button>
+                </div>
+                <div className={`hamburger-menu ${isMenuOpen ? "open" : ""}`}>
+                    <ul>
+                        {linksList}
+                    </ul>
                 </div>
             </nav>
         </header>

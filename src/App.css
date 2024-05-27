@@ -149,7 +149,7 @@ button:not([class]):disabled:active {
     outline-color: hsl(0 80% 60%);
 }
 
-button.icon {
+button.hamburger {
     background-color: #ffffff;
     border: none;
     padding: 0;

@@ -30,9 +30,35 @@ header {
     display: flex;
 }
 
-/* The ul that contains the links */
+/* The ul that contains the links for screens > 1200px */
 .nav-links {
     display: none;
+}
+
+/* The hamburger menu's links */
+.hamburger-menu {
+    display: none;
+}
+
+.hamburger-menu.open {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 100px;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.hamburger-menu.open ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+.hamburger-menu.open li {
+    padding: 1em 1em;
 }
 
 /* Media queries */
