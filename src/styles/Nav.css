@@ -35,21 +35,27 @@ header {
     display: none;
 }
 
-/* The hamburger menu's links */
+/* Hamburger menu */
 .hamburger-menu {
-    display: none;
+    display: flex;
+    position: fixed;
+    background-color: #ffffff;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    transition: right 200ms ease-in-out;
+}
+
+/* Prevents menu from flickering or appearing on initial page load */
+.hamburger-menu.hidden {
+    visibility: hidden;
 }
 
 .hamburger-menu.open {
-    display: flex;
-    position: fixed;
-    top: 0;
-    right: 100px;
-    background-color: #ffffff;
-    border-radius: 16px;
+    visibility: visible;
 }
 
-.hamburger-menu.open ul {
+/* Hamburger menu's links */
+.hamburger-menu ul {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +63,7 @@ header {
     padding-left: 0;
 }
 
-.hamburger-menu.open li {
+.hamburger-menu li {
     padding: 1em 1em;
 }
 
