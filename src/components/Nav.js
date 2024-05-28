@@ -43,6 +43,7 @@ const linksList = links.map((data, i) => {
 const Navbar = () => {
     // Tracks if hamburger menu has been opened
     const [isMenuOpen, setIsMenuOpen] = useState(null);
+    // Refs for getting element sizes
     const menuRef = useRef(null);
     const headerRef = useRef(null);
 
@@ -62,7 +63,7 @@ const Navbar = () => {
 
     // Ensures right side of menu aligns with right side of page
     const getMenuHorizontalPosition = () => {
-        return isMenuOpen ? `0` : `calc(-${getMenuWidth()}px - 2px)`; // subtract 2px to account for rounding discrepancies and/or subpixel rendering
+        return isMenuOpen ? "0" : `calc(-${getMenuWidth()}px - 2px)`; // subtract 2px to account for rounding discrepancies and/or subpixel rendering
     };
 
     // Positions menu upon page load
