@@ -32,6 +32,18 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         setFormSubmitted(true);
     };
 
+    const formatDate = date => {
+        // Break date up
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // Add 1 because getMonth() uses a 0-based array (e.g., Jan -> 0th month)
+        const year = date.getFullYear();
+
+        // Format date (HTML date input understands format YYYY-MM-DD)
+        const formattedDate = `${year.toString()}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+        return formattedDate;
+    }
+
     /* Gets current date, formats it, and passes it to stateful date variable
      * Also ensures that initial guest amount displays on page load
      * formSubmitted dependency ensures date input is repopulated with current date
@@ -44,16 +56,11 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         // Get current date
         const currentDate = new Date();
 
-        // Break date up
-        const currentDay = currentDate.getDate();
-        const currentMonth = currentDate.getMonth() + 1; // Add 1 because getMonth() uses a 0-based array (e.g., Jan -> 0th month)
-        const currentYear = currentDate.getFullYear();
-
-        // Format date to initialize stateful date variable
-        // (HTML date input understands format YYYY-MM-DD)
-        const formattedDate = `${currentYear.toString()}-${currentMonth.toString().padStart(2, '0')}-${currentDay.toString().padStart(2, '0')}`;
-
-        setFormData({ guests: 4, date: formattedDate });
+        setFormData({
+            ...formData,
+            guests: 4,
+            date: formatDate(currentDate)
+        });
     }, [formSubmitted]);
 
     return (
