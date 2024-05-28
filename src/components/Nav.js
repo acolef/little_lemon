@@ -66,7 +66,7 @@ const Navbar = () => {
         return isMenuOpen ? "0" : `calc(-${getMenuWidth()}px - 2px)`; // subtract 2px to account for rounding discrepancies and/or subpixel rendering
     };
 
-    // Positions menu upon page load
+    // Positions menu
     useEffect(() => {
         const menuHorizontalPosition = getMenuHorizontalPosition();
         const menuVerticalPosition = getHeaderHeight();
