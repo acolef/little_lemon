@@ -4,6 +4,18 @@
     background-color: var(--secondary-peach);
 }
 
+.booking-elements {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    align-items: center;
+    padding: 2em 3em 3em;
+    max-width: fit-content;
+    border-radius: 16px;
+    background-color: hsl(0 0% 100% / 0.5)
+}
+
+/* Input styling */
 label,
 select {
     font-family: Karla, sans-serif;

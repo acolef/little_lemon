@@ -42,7 +42,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         const formattedDate = `${year.toString()}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
         return formattedDate;
-    }
+    };
 
     /* Gets current date, formats it, and passes it to stateful date variable
      * Also ensures that initial guest amount displays on page load
