@@ -74,7 +74,7 @@ const Navbar = () => {
         if (menuRef.current) {
             menuRef.current.style.top = `${menuVerticalPosition}px`;
             menuRef.current.style.right = menuHorizontalPosition;
-        }
+        };
     }, [isMenuOpen]);
 
     // Toggles menu upon clicking hamburger icon

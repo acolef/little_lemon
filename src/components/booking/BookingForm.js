@@ -59,7 +59,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         setFormData({
             ...formData,
             guests: 4,
-            date: formatDate(currentDate)
+            date: formatDate(currentDate),
         });
     }, [formSubmitted]);
 
