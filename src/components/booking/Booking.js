@@ -1,8 +1,7 @@
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import BookingForm from './BookingForm';
 import '../../styles/Booking.css';
 import { fetchAPI, submitAPI } from '../../api';
-import pasta from '../../assets/pasta.jpg';
 
 // Reducer function - changes available reservation times based on selected date
 const updateTimes = (_, action) => {
