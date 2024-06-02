@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import '../../styles/Booking.css';
 import { fetchAPI, submitAPI } from '../../api';
@@ -23,6 +24,12 @@ const initializeTimes = () => {
 const Booking = () => {
     // Must call initializeTimes() as a function so it returns initial state
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+    const navigate = useNavigate();
+
+    const submitForm = (formData) => {
+        if (submitAPI(formData))
+            navigate("/booking/confirm");
+    };
 
     return (
         <section className="page-section booking">
@@ -34,6 +41,7 @@ const Booking = () => {
                     <BookingForm
                         availableTimes={availableTimes}
                         dispatch={dispatch}
+                        submitForm={submitForm}
                     />
                 </div>
             </div>

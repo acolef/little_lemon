@@ -4,6 +4,12 @@
     background-color: var(--secondary-peach);
 }
 
+.confirm-booking {
+    padding-top: 11em;
+    padding-bottom: 8em;
+    background-color: var(--secondary-peach);
+}
+
 .booking-elements {
     display: flex;
     flex-direction: column;
@@ -13,6 +19,70 @@
     max-width: fit-content;
     border-radius: 16px;
     background-color: hsl(0 0% 100% / 0.5)
+}
+
+/* Confirmation page */
+.confirm-booking-elements {
+    display: flex;
+    flex-direction: column;
+}
+
+.confirm-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    align-items: center;
+}
+
+.confirm-bg {
+    display: flex;
+    background: url("../assets/pasta.jpg") left no-repeat;
+    padding: 5em 0 5em 2em;
+}
+
+.confirm-bg > h3 {
+    /* This hsl value is equal to var(--primary-green) */
+    background-color: hsl(162 13% 31% / 0.85);
+    padding: 1rem;
+}
+
+.confirm-msg {
+    color: #000000;
+    font-style: italic;
+    text-align: center;
+}
+
+.confirm-img {
+    display: none;
+}
+
+/* Confirmation page media queries */
+/* Large screens (> 992px) */
+@media (min-width: 992px) {
+    .confirm-booking-elements {
+        row-gap: 6em;
+    }
+
+    .confirm-text {
+        justify-content: center;
+        flex-direction: row;
+        column-gap: 1em;
+    }
+
+    .confirm-bg {
+        background: none;
+        padding: 0;
+    }
+
+    .confirm-bg > h3 {
+        background-color: hsl(162 13% 31%);
+        text-align: right;
+    }
+
+    .confirm-img {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 /* Input styling */

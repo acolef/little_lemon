@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/Booking.css';
 
-const BookingForm = ({ availableTimes, dispatch }) => {
+const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const [formData, setFormData] = useState({
         fname: "",
         lname: "",
@@ -18,6 +18,8 @@ const BookingForm = ({ availableTimes, dispatch }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        submitForm(formData);
 
         // Reset fields
         setFormData({
