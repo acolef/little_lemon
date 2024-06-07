@@ -21,6 +21,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
         submitForm(formData);
 
+        /* --- This code was used in a previous implementation ---
         // Reset fields
         setFormData({
             fname: "",
@@ -32,6 +33,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         });
 
         setFormSubmitted(true);
+        * ---
+        */
     };
 
     const formatDate = date => {
@@ -52,8 +55,11 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
      * upon form submission
      */
     useEffect(() => {
+        /* --- This code was used in a previous implementation ---
         // Reset formSubmitted to false
         setFormSubmitted(false);
+        * ---
+        */
 
         // Get current date
         const currentDate = new Date();
