@@ -69,6 +69,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     return (
         <form onSubmit={handleSubmit} data-testid="res-form">
             <label htmlFor="res-fname" id="fnameLabel">First name </label>
+            <br />
             <input
                 name="fname"
                 id="res-fname"
@@ -81,6 +82,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             <br />
 
             <label htmlFor="res-lname" id="lnameLabel">Last name </label>
+            <br />
             <input
                 name="lname"
                 id="res-lname"
@@ -93,6 +95,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             <br />
 
             <label htmlFor="res-date" id="reservationDate">Date </label>
+            <br />
             <input
                 name="date"
                 id="res-date"
@@ -108,6 +111,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             <br />
 
             <label htmlFor="res-time" id="reservationTime">Time </label>
+            <br />
             <select
                 name="time"
                 id="res-time"
@@ -140,6 +144,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             <br />
 
             <label htmlFor="res-occasion" id="occasion">Occasion </label>
+            <br />
             <select
                 name="occasion"
                 id="res-occasion"
