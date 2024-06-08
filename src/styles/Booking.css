@@ -21,6 +21,16 @@
     background-color: hsl(0 0% 100% / 0.5)
 }
 
+/* Styles asterisk for required fields */
+.asterisk {
+    color: red;
+}
+
+/* Styles text notifying users of required fields */
+.required {
+    color: var(--highlight-black);
+}
+
 /* Confirmation page */
 .confirm-booking-elements {
     display: flex;

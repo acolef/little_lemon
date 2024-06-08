@@ -37,6 +37,11 @@ const Booking = () => {
                 <div>
                     <h2>Reserve a table</h2>
                 </div>
+                <div>
+                    <p className="required">
+                        <span className="asterisk">*</span> indicates a required field
+                    </p>
+                </div>
                 <div className="booking-form">
                     <BookingForm
                         availableTimes={availableTimes}

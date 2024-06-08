@@ -68,7 +68,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
     return (
         <form onSubmit={handleSubmit} data-testid="res-form">
-            <label htmlFor="res-fname" id="fnameLabel">First name </label>
+            <label htmlFor="res-fname" id="fnameLabel">
+                First name<span className="asterisk">*</span>
+            </label>
             <br />
             <input
                 name="fname"
@@ -81,7 +83,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             />
             <br />
 
-            <label htmlFor="res-lname" id="lnameLabel">Last name </label>
+            <label htmlFor="res-lname" id="lnameLabel">
+                Last name<span className="asterisk">*</span>
+            </label>
             <br />
             <input
                 name="lname"
@@ -94,7 +98,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             />
             <br />
 
-            <label htmlFor="res-date" id="reservationDate">Date </label>
+            <label htmlFor="res-date" id="reservationDate">
+                Date<span className="asterisk">*</span>
+            </label>
             <br />
             <input
                 name="date"
@@ -110,7 +116,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             />
             <br />
 
-            <label htmlFor="res-time" id="reservationTime">Time </label>
+            <label htmlFor="res-time" id="reservationTime">
+                Time<span className="asterisk">*</span>
+            </label>
             <br />
             <select
                 name="time"
@@ -128,7 +136,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             </select>
             <br />
 
-            <label htmlFor="res-guests" id="numGuests">Number of guests ({formData.guests})</label>
+            <label htmlFor="res-guests" id="numGuests">
+                Number of guests<span className="asterisk">*</span> ({formData.guests})
+            </label>
             <br />
             <input
                 name="guests"
@@ -143,7 +153,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             />
             <br />
 
-            <label htmlFor="res-occasion" id="occasion">Occasion </label>
+            <label htmlFor="res-occasion" id="occasion">
+                Occasion<span className="asterisk">*</span>
+            </label>
             <br />
             <select
                 name="occasion"
