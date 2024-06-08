@@ -19,6 +19,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        setFormSubmitted(true);
+
         submitForm(formData);
 
         /* --- This code was used in a previous implementation ---
@@ -31,8 +33,6 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             guests: 4,
             occasion: "Birthday",
         });
-
-        setFormSubmitted(true);
         * ---
         */
     };
@@ -51,15 +51,10 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
     /* Gets current date, formats it, and passes it to stateful date variable
      * Also ensures that initial guest amount displays on page load
-     * formSubmitted dependency ensures date input is repopulated with current date
-     * upon form submission
      */
     useEffect(() => {
-        /* --- This code was used in a previous implementation ---
         // Reset formSubmitted to false
         setFormSubmitted(false);
-        * ---
-        */
 
         // Get current date
         const currentDate = new Date();
