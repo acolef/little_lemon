@@ -8,34 +8,20 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         date: "",
         time: availableTimes[0],
         guests: 4,
-        occasion: "Birthday",
+        occasion: "Select an occasion",
     });
-    const [formSubmitted, setFormSubmitted] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
 
-        setFormSubmitted(true);
-
         submitForm(formData);
-
-        /* --- This code was used in a previous implementation ---
-        // Reset fields
-        setFormData({
-            fname: "",
-            lname: "",
-            date: "",
-            time: availableTimes[0],
-            guests: 4,
-            occasion: "Birthday",
-        });
-        * ---
-        */
     };
+
+    const currentDate = new Date();
 
     const formatDate = date => {
         // Break date up
@@ -49,22 +35,38 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         return formattedDate;
     };
 
-    /* Gets current date, formats it, and passes it to stateful date variable
+    // Formats times for easy comparison
+    const formatTime = date => {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+
+        const formattedTime = `${hours}.${minutes}`;
+
+        return Number(formattedTime);
+    };
+
+    // Formats availableTimes for easy comparison
+    const formatAvailableTime = time => {
+        // Gets all characters before the colon in available time of format hh:mm
+        const hours = time.substring(0, time.indexOf(':'));
+        // Gets all characters after the colon in available time
+        const minutes = time.substring(time.indexOf(':') + 1); // + 1 is needed to skip colon's string index
+
+        const formattedAvailableTime = `${hours}.${minutes}`;
+
+        return Number(formattedAvailableTime);
+    };
+
+    /* Takes current date, formats it, and passes it to stateful date variable
      * Also ensures that initial guest amount displays on page load
      */
     useEffect(() => {
-        // Reset formSubmitted to false
-        setFormSubmitted(false);
-
-        // Get current date
-        const currentDate = new Date();
-
         setFormData({
             ...formData,
             guests: 4,
             date: formatDate(currentDate),
         });
-    }, [formSubmitted]);
+    }, []);
 
     return (
         <form onSubmit={handleSubmit} data-testid="res-form">
@@ -80,6 +82,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 aria-required="true"
                 value={formData.fname}
                 onChange={handleChange}
+                required
             />
             <br />
 
@@ -95,6 +98,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 aria-required="true"
                 value={formData.lname}
                 onChange={handleChange}
+                required
             />
             <br />
 
@@ -113,6 +117,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                     handleChange(e);
                     dispatch({ payload: { date: e.target.value } });
                 }}
+                min={formatDate(currentDate)}
             />
             <br />
 
@@ -130,7 +135,15 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             >
                 {availableTimes.map((time, i) => {
                     return (
-                        <option key={i}>{time}</option>
+                        <option
+                            key={i}
+                            disabled=
+                                {
+                                    formatAvailableTime(time) < formatTime(currentDate)
+                                }
+                        >
+                            {time}
+                        </option>
                     );
                 })}
             </select>
@@ -164,16 +177,25 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 aria-required="true"
                 value={formData.occasion}
                 onChange={handleChange}
+                required
             >
+                <option disabled>Select an occasion</option>
                 <option>Birthday</option>
                 <option>Anniversary</option>
                 <option>Other</option>
             </select>
             <br />
 
+            <br />
             <button
                 type="submit"
                 aria-label="Make your reservation"
+                disabled=
+                    {
+                        !formData.fname ||
+                        !formData.lname ||
+                        formData.occasion == "Select an occasion"
+                    }
             >
                 Make your reservation
             </button>
