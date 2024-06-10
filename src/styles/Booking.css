@@ -96,12 +96,18 @@
 }
 
 /* Input styling */
-label,
-select {
+label {
     font-family: Karla, sans-serif;
     font-weight: bold;
     font-size: 16pt;
     margin: 0.3em;
+}
+
+select {
+    font-family: Karla, sans-serif;
+    font-size: 16pt;
+    margin: 0.3em;
+    background-color: var(--highlight-gray);
 }
 
 input {
@@ -119,10 +125,6 @@ input:not([type="range"]) {
                 var(--highlight-gray) left 0% / 100% 100% no-repeat;
     transition: background-size 200ms ease-in-out,
                 box-shadow 200ms ease-in-out;
-}
-
-select {
-    background-color: var(--highlight-gray);
 }
 
 input:not([type="range"]),
@@ -149,15 +151,14 @@ input[type="range"] {
     appearance: none;
     background-color: var(--highlight-gray);
     width: 200px;
-    height: 8px;
-    border: 1px solid var(--highlight-black);
-    border-radius: 4px;
     transition: box-shadow 200ms ease-in-out;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
+    /* Necessary because Chrome offsets thumb position */
+    margin-top: -15px;
     width: 30px;
     height: 30px;
     background: url('../assets/Lemon.png');
@@ -167,7 +168,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    background-color: var(--primary-yellow);
+    /* Necessary because Chrome will make the track too big */
+    height: 8px;
+    border: 1px solid var(--highlight-black);
+    border-radius: 4px;
+    background: var(--primary-yellow);
 }
 
 /* Firefox */
@@ -192,5 +197,6 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]::-moz-range-progress {
+    border-radius: 4px;
     background-color: var(--primary-yellow);
 }
