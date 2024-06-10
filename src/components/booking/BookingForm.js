@@ -6,7 +6,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         fname: "",
         lname: "",
         date: "",
-        time: availableTimes[0],
+        time: "",
         guests: 4,
         occasion: "Select an occasion",
     });
@@ -132,6 +132,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 aria-required="true"
                 value={formData.time}
                 onChange={handleChange}
+                required
             >
                 {availableTimes.map((time, i) => {
                     return (
