@@ -10,9 +10,20 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         guests: 4,
         occasion: "Select an occasion",
     });
+    const [allTimesDisabled, setAllTimesDisabled] = useState(false);
+    const currentDate = new Date();
+    const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
 
     const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleDate = e => {
+        const selectedDate = new Date(e.target.value);
+        // Have to offset UTC time to normalize time to user's locale time, ensuring proper day is set
+        selectedDate.setMinutes(selectedDate.getMinutes() + selectedDate.getTimezoneOffset());
+
+        setSelectedDay(selectedDate.getDate());
     };
 
     const handleSubmit = e => {
@@ -20,8 +31,6 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
 
         submitForm(formData);
     };
-
-    const currentDate = new Date();
 
     const formatDate = date => {
         // Break date up
@@ -67,6 +76,23 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             date: formatDate(currentDate),
         });
     }, []);
+
+    /* Checks to see if there are no available times; if so, it updates the
+     * allTimesDisabled variable to true
+     */
+    const checkTimes = () => {
+        const currentDay = currentDate.getDate()
+        const timeSelect = document.getElementById("res-time");
+        // Extracts all options from timeSelect (i.e., available times)
+        const times = timeSelect.options;
+        // Checks if every time option is disabled; true, if so
+        const allDisabled = Array.from(times).every(option => option.disabled);
+
+        // If the selected form day is less than or equal to the current locale day...
+        if (selectedDay <= currentDay)
+            // ... set allTimesDisabled to true
+            setAllTimesDisabled(allDisabled);
+    };
 
     return (
         <form onSubmit={handleSubmit} data-testid="res-form">
@@ -115,6 +141,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 value={formData.date}
                 onChange={(e) => {
                     handleChange(e);
+                    handleDate(e);
                     dispatch({ payload: { date: e.target.value } });
                 }}
                 min={formatDate(currentDate)}
@@ -132,6 +159,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 aria-required="true"
                 value={formData.time}
                 onChange={handleChange}
+                onFocus={checkTimes}
                 required
             >
                 {availableTimes.map((time, i) => {
@@ -140,7 +168,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                             key={i}
                             disabled=
                                 {
-                                    formatAvailableTime(time) < formatTime(currentDate)
+                                    (formatAvailableTime(time) < formatTime(currentDate)) &&
+                                    (selectedDay <= currentDate.getDate())
                                 }
                         >
                             {time}
@@ -149,6 +178,9 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 })}
             </select>
             <br />
+            {
+                allTimesDisabled && <p className="times-disabled">No times left for today - try a different day</p>
+            }
 
             <label htmlFor="res-guests" id="numGuests">
                 Number of guests<span className="asterisk">*</span> ({formData.guests})
