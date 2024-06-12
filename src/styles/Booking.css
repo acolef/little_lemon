@@ -31,6 +31,12 @@
     color: var(--highlight-black);
 }
 
+/* Styles text notifying users of lack of available times */
+.times-disabled {
+    color: var(--highlight-black);
+    font-size: 14pt;
+}
+
 /* Confirmation page */
 .confirm-booking-elements {
     display: flex;
