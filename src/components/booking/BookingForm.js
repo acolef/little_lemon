@@ -94,6 +94,23 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             setAllTimesDisabled(allDisabled);
     };
 
+    // Checks to see if an available time has already passed
+    const isTimeDisabled = (time) => {
+        return (
+            (formatAvailableTime(time) < formatTime(currentDate)) &&
+            (selectedDay <= currentDate.getDate())
+        );
+    };
+
+    // Validation function that disables submission if any required fields are missing
+    const isButtonDisabled = () => {
+        return (
+            !formData.fname ||
+            !formData.lname ||
+            formData.occasion == "Select an occasion"
+        );
+    };
+
     return (
         <form onSubmit={handleSubmit} data-testid="res-form">
             <label htmlFor="res-fname" id="fnameLabel">
@@ -164,14 +181,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             >
                 {availableTimes.map((time, i) => {
                     return (
-                        <option
-                            key={i}
-                            disabled=
-                                {
-                                    (formatAvailableTime(time) < formatTime(currentDate)) &&
-                                    (selectedDay <= currentDate.getDate())
-                                }
-                        >
+                        <option key={i} disabled={isTimeDisabled(time)}>
                             {time}
                         </option>
                     );
@@ -223,12 +233,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             <button
                 type="submit"
                 aria-label="Make your reservation"
-                disabled=
-                    {
-                        !formData.fname ||
-                        !formData.lname ||
-                        formData.occasion == "Select an occasion"
-                    }
+                disabled={isButtonDisabled()}
             >
                 Make your reservation
             </button>
