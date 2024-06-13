@@ -30,7 +30,7 @@ describe('Booking and BookingForm tests', () => {
 
     render(<BookingForm availableTimes={availableTimes} />);
 
-    // Jest normalizes away trailing spaces in text by default
+    // No need to include asterisks
     const firstNameLabel = screen.getByText("First name");
     expect(firstNameLabel).toBeInTheDocument();
 
@@ -74,60 +74,57 @@ describe('Booking and BookingForm tests', () => {
     expect(updatedAvailableTimes).not.toEqual(mockAvailableTimes);
   });
 
-  /* --- The following tests were used for an older implementation! ---
+  test('Ensures correct validation attributes are applied to booking form elements', () => {
+    const availableTimes = initializeTimes();
+    render(<BookingForm availableTimes={availableTimes} />);
 
-  test('Validates behavior of initializeTimes() and updateTimes() reducer function', () => {
-    // Default state value for times property
-    const timesStateValue = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+    // Get form input elements
+    const fNameInput = screen.getByLabelText("First name*");
+    const lNameInput = screen.getByLabelText("Last name*");
+    const dateInput = screen.getByLabelText("Date*");
+    const timeInput = screen.getByLabelText("Time*");
+    const guestInput = screen.getByLabelText(/Number of guests\* \(\d+\)/);
+    const occasionInput = screen.getByLabelText("Occasion*");
 
-    // Checks value returned by initializeTimes()
-    expect(initializeTimes()).toEqual({ times: timesStateValue });
-
-    // Checks that updateTimes() reducer function returns correct value
-    expect(updateTimes()).toEqual({ times: ["16:00", ...timesStateValue] });
+    expect(fNameInput).toHaveAttribute("required");
+    expect(lNameInput).toHaveAttribute("required");
+    // min=formatDate(currentDate) only sees YYYY-MM-DD
+    expect(dateInput).toHaveAttribute("min", new Date().toISOString().split("T")[0]);
+    expect(timeInput).toHaveAttribute("required");
+    expect(guestInput).toHaveAttribute("min", "1");
+    expect(occasionInput).toHaveAttribute("required");
   });
 
-  test('Tests valid form submission', () => {
+  test('Ensures submission is prevented if any required fields are missing', () => {
     const availableTimes = initializeTimes();
+    render(<BookingForm availableTimes={availableTimes} />);
 
-    render(<BookingForm availableTimes={availableTimes} dispatch={jest.fn()} />);
-
-    // Fill out form
-    const fnameInput = screen.getByLabelText("First name");
-    fireEvent.change(fnameInput, { target: { value: "Tester" } });
-
-    const lnameInput = screen.getByLabelText("Last name");
-    fireEvent.change(lnameInput, { target: { value: "Tester" } });
-
-    const dateInput = screen.getByLabelText("Date");
-    fireEvent.change(dateInput, { target: { value: "2025-05-24" } }); // HTML understands YYYY-MM-DD
-
-    const timeInput = screen.getByLabelText("Time");
-    fireEvent.change(timeInput, { target: { value: availableTimes[1] } }); // "18:00"
-
-    const guestsInput = screen.getByLabelText(/Number of guests \(\d+\)/);
-    fireEvent.change(guestsInput, { target: { value: 8 } });
-
-    const occasionInput = screen.getByLabelText("Occasion");
-    fireEvent.change(occasionInput, { target: { value: "Other" } });
-
-    // Submit and clear form
+    // Date, time, and number of guests are always filled out by default
+    const fNameInput = screen.getByLabelText("First name*");
+    const lNameInput = screen.getByLabelText("Last name*");
+    const occasionInput = screen.getByLabelText("Occasion*");
     const submitBtn = screen.getByText("Make your reservation");
-    fireEvent.click(submitBtn);
 
-    // Check that form was cleared
-    const reservationForm = screen.getByTestId("res-form");
-    expect(reservationForm).toHaveFormValues({
-      fname: "",
-      lname: "",
-      date: "2024-06-07", // Use today's date
-      time: availableTimes[0], // "17:00"
-      guests: "4",
-      occasion: "Birthday",
+    // Test input combination permutations
+    const testCases = [
+      { fName: "Test", lName: "", occasion: "Select an occasion", expectedDisabled: true },
+      { fName: "", lName: "Test", occasion: "Select an occasion", expectedDisabled: true },
+      { fName: "", lName: "", occasion: "Birthday", expectedDisabled: true },
+      { fName: "Test", lName: "Test", occasion: "Select an occasion", expectedDisabled: true },
+      { fName: "Test", lName: "", occasion: "Birthday", expectedDisabled: true },
+      { fName: "", lName: "Test", occasion: "Birthday", expectedDisabled: true },
+      { fName: "Test", lName: "Test", occasion: "Birthday", expectedDisabled: false },
+    ];
+
+    testCases.forEach(({ fName, lName, occasion, expectedDisabled }) => {
+      fireEvent.change(fNameInput, { target: { value: fName } });
+      fireEvent.change(lNameInput, { target: { value: lName } });
+      fireEvent.change(occasionInput, { target: { value: occasion } });
+
+      if (expectedDisabled)
+        expect(submitBtn).toHaveAttribute("disabled");
+      else
+        expect(submitBtn).not.toHaveAttribute("disabled");
     });
   });
-
-  * ---
-  */
-
 });
