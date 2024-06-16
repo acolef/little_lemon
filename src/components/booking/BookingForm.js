@@ -81,7 +81,6 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
      * allTimesDisabled variable to true
      */
     const checkTimes = () => {
-        const currentDay = currentDate.getDate()
         const timeSelect = document.getElementById("res-time");
         // Extracts all options from timeSelect (i.e., available times)
         const times = timeSelect.options;
