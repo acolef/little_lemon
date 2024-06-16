@@ -134,7 +134,8 @@ button:not([class]) {
     transition: all 100ms ease-in-out;
 }
 
-button:not([class]):active {
+button:not([class]):active,
+button:not([class]):focus {
     background-color: var(--primary-green);
     color: var(--highlight-gray);
 }
