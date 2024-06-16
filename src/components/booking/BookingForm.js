@@ -88,10 +88,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         // Checks if every time option is disabled; true, if so
         const allDisabled = Array.from(times).every(option => option.disabled);
 
-        // If the selected form day is less than or equal to the current locale day...
-        if (selectedDay <= currentDay)
-            // ... set allTimesDisabled to true
-            setAllTimesDisabled(allDisabled);
+        setAllTimesDisabled(allDisabled);
     };
 
     // Checks to see if an available time has already passed
