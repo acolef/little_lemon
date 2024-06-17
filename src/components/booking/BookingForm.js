@@ -155,6 +155,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 onChange={(e) => {
                     handleChange(e);
                     handleDate(e);
+                    checkTimes();
                     dispatch({ payload: { date: e.target.value } });
                 }}
                 min={formatDate(currentDate)}
