@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../../styles/Booking.css';
 
 const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
@@ -13,6 +13,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const [allTimesDisabled, setAllTimesDisabled] = useState(false);
     const currentDate = new Date();
     const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
+    const timeSelectRef = useRef(null);
 
     const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -77,20 +78,19 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         });
     }, []);
 
-    /* Checks to see if there are no available times; if so, it updates the
-     * allTimesDisabled variable to true
-     */
-    const checkTimes = () => {
-        const timeSelect = document.getElementById("res-time");
-        // Extracts all options from timeSelect (i.e., available times)
+    // Checks if ALL available times have passed
+    useEffect(() => {
+        const timeSelect = timeSelectRef.current;
         const times = timeSelect.options;
-        // Checks if every time option is disabled; true, if so
-        const allDisabled = Array.from(times).every(option => option.disabled);
 
-        setAllTimesDisabled(allDisabled);
-    };
+        // If created array is empty, no times are available
+        if (Array.from(times).length === 0)
+            setAllTimesDisabled(true);
+        else
+            setAllTimesDisabled(false);
+    }, [selectedDay]);
 
-    // Checks to see if an available time has already passed
+    // Checks if available time has passed
     const isTimeDisabled = (time) => {
         return (
             (formatAvailableTime(time) < formatTime(currentDate)) &&
@@ -155,7 +155,6 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 onChange={(e) => {
                     handleChange(e);
                     handleDate(e);
-                    checkTimes();
                     dispatch({ payload: { date: e.target.value } });
                 }}
                 min={formatDate(currentDate)}
@@ -171,16 +170,14 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
                 id="res-time"
                 aria-labelledby="reservationTime"
                 aria-required="true"
+                ref={timeSelectRef}
                 value={formData.time}
                 onChange={handleChange}
-                onFocus={checkTimes}
                 required
             >
                 {availableTimes.map((time, i) => {
                     return (
-                        <option key={i} disabled={isTimeDisabled(time)}>
-                            {time}
-                        </option>
+                        !isTimeDisabled(time) && <option key={i}>{time}</option>
                     );
                 })}
             </select>
