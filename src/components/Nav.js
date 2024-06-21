@@ -50,7 +50,7 @@ const Navbar = () => {
     // Dynamically calculates header height
     const getHeaderHeight = () => {
         if (headerRef.current)
-            return headerRef.current.offsetHeight;
+            return `${headerRef.current.offsetHeight}px`;
         return 0;
     };
 
@@ -72,7 +72,7 @@ const Navbar = () => {
         const menuVerticalPosition = getHeaderHeight();
 
         if (menuRef.current) {
-            menuRef.current.style.top = `${menuVerticalPosition}px`;
+            menuRef.current.style.top = menuVerticalPosition;
             menuRef.current.style.right = menuHorizontalPosition;
         };
     }, [isMenuOpen]);
