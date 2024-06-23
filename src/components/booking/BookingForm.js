@@ -88,7 +88,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
             setAllTimesDisabled(true);
         else
             setAllTimesDisabled(false);
-    }, [selectedDay]);
+    }, [selectedDay, allTimesDisabled]);
 
     // Checks if available time has passed
     const isTimeDisabled = (time) => {
