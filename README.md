@@ -1,4 +1,5 @@
 # Little Lemon Capstone Project
+## Preface
 This is my project submission for the Meta Front-End Developer Capstone course on Coursera. Included is a React application for a fictitious restaurant, Little Lemon, in Chicago, Illinois. As per the requirements, the site currently includes a few completed pages:
 
 1. The homepage
