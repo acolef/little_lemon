@@ -9,6 +9,7 @@ The website's design was inspired by a Figma mock-up of the homepage, which we w
 
 - [Homepage mock-up](https://www.figma.com/design/ugZ4DJawwBa4pEYhoACKbq/canvas?node-id=0-1&t=1Qo05Yzsq3xmAWMN-1)
 - [Design document](https://www.figma.com/design/ekIgzNFuWd5TzEOLA8dhv6/Little-Lemon-prototype?node-id=1-142&t=17BLUr9q3bBLOvOP-1)
+- [Higher resolution style guide reference](https://github.com/acolef/little_lemon/blob/main/style-guide/PG_LittleLemon_StyleGuide.pdf)
 
 I have tried to stay faithful to both while designing the site, while prioritzing clarity, stylistic consistency, readability, accessibility, and functionality.
 
