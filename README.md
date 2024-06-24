@@ -67,10 +67,23 @@ The site's internal links live in the `Nav` component. They are stored in an arr
 
 For this section, I went a bit "above and beyond" what we were requested to do. I included a hamburger icon that replaces the link list on smaller devices; clicking or tapping the icon will open an animated, non-intrusive navigation menu with the links arranged vertically. Clicking or tapping anywhere outside of the menu will close it, causing it to slide off the page. The hamburger icon is a React button element of class `.hamburger`, so I can control its display in the media queries. Since I am adhering to the mobile first approach, the navbar's link list is hidden by default by setting `display: none;` for the `.nav-links`.
 
-The menu controlled by the hamburger icon is always rendered, but it is off-screen by default. Originally the menu would undesirably appear on page load and then slide off the right side of the screen. I addressed this by initializing the menu's state variable to `null` on initial app render: `const [isMenuOpen, setIsMenuOpen] = useState(null);`. I then added a `.hidden` class for the hamburger menu, which the menu receives only if `isMenuOpen` is `null`. If the hamburger icon is clicked, the `toggleMenu` function fires and either opens or closes the menu by conditionally adding or removing `.open` from the menu's classes. This is all controlled by
+The menu controlled by the hamburger icon is always rendered, but it is off-screen by default. Originally the menu would undesirably appear on page load and then slide off the right side of the screen. I addressed this by initializing the menu's state variable to `null` on initial app render: `const [isMenuOpen, setIsMenuOpen] = useState(null);`. I then added a `.hidden` class for the hamburger menu, which the menu receives only if `isMenuOpen` is `null`. If the hamburger icon is clicked, the `toggleMenu` function fires and either opens or closes the menu by conditionally adding or removing `.open` from the menu's classes, facilitated by setting `isMenuOpen` to either true or false. This is all controlled by
+
+```
+const toggleMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(!isMenuOpen);
+};
+```
+
+and
+
+
 ```
 <div
     ref={menuRef}
     className={`hamburger-menu ${isMenuOpen === null ? "hidden" : isMenuOpen ? "open" : ""}`}
 >
 ```
+
+Note that the `toggleMenu` function includes `e.stopPropagation();`! This is because upon clicking the hamburger icon, it would open and then immediately close, due to event bubbling.
