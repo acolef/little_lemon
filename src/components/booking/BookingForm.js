@@ -103,6 +103,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         return (
             !formData.fname ||
             !formData.lname ||
+            !formData.time ||
             formData.occasion == "Select an occasion"
         );
     };
