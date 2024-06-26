@@ -132,7 +132,7 @@ const getMenuHorizontalPosition = () => {
 };
 ```
 
-The values `0` and ```calc(-${getMenuWidth()}px - 2px)``` (note the minus sign!) represent the opened and closed `right` CSS property values for the opened and closed states, respectively.
+The values `0` and `` `calc(-${getMenuWidth()}px - 2px)` `` (note the minus sign!) represent the opened and closed `right` CSS property values for the opened and closed states, respectively.
 
 This all comes to fruition in a `useEffect` hook (because we are manipulating the DOM) which updates every time `isMenuOpen`'s Boolean value switches:
 
