@@ -86,16 +86,8 @@ const Navbar = () => {
     // Closes menu when user clicks outside of it
     useEffect(() => {
         const handleClick = (e) => {
-            // Represents open hamburger menu
-            const hamburgerMenu = document.querySelector(".hamburger-menu.open");
-
-            let clickLocation = e.target;
-
-            do {
-                if (clickLocation == hamburgerMenu)
-                    return; // do nothing if click is anywhere inside menu
-                clickLocation = clickLocation.parentNode;
-            } while (clickLocation); // loop through parent elements of target
+            if (menuRef.current && menuRef.current.contains(e.target))
+                return; // do nothing if click is inside menu
 
             setIsMenuOpen(false); // close menu otherwise
         };
