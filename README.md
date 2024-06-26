@@ -124,7 +124,7 @@ const getMenuWidth = () => {
 };
 ```
 
-The menu's vertical position is always determined by the header's height, so I reflect this in the CSS by `menuRef.current.style.top = menuVerticalPosition;`. However, the menu's horizontal position is conditional: if closed, it needs to be off-screen, and when open, it needs to be on-screen. I decided to make it stay *just* off-screen by an amount equal to its dynamic width plus 2 additional pixels. Why? Well, without the extra 2 pixel buffer, rounding issues and sub-pixel rendering can make the left edge of the menu appear on the right edge of the screen. So I define another function:
+The menu's vertical position is always determined by the header's height, so I reflect this in the CSS with the following JavaScript: `menuRef.current.style.top = menuVerticalPosition;`. However, the menu's horizontal position is conditional: if closed, it needs to be off-screen, and when open, it needs to be on-screen. I decided to make it stay *just* off-screen by an amount equal to its dynamic width plus 2 additional pixels. Why? Well, without the extra 2 pixel buffer, rounding issues and sub-pixel rendering can make the left edge of the menu appear on the right edge of the screen. So I define another function:
 
 ```
 const getMenuHorizontalPosition = () => {
