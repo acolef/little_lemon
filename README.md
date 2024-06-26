@@ -65,7 +65,7 @@ I imported the site's internal links from the `Nav` component instead of definin
 ## The navbar
 The site's internal links live in the `Nav` component. They are stored in an array of objects, each object possessing an `info` and a `url` property; `info` contains the link's visible label, whereas the `url` property controls the actual routing. The navbar itself is always visible at the top of the page, because I set the header element's position to `fixed` with a `z-index` of 2, rendering it above the rest of the page's contents.
 
-For this section, I went a bit "above and beyond" what we were requested to do. I included a hamburger icon that replaces the link list on smaller devices; clicking or tapping the icon will open an animated, non-intrusive navigation menu with the links arranged vertically. Clicking or tapping anywhere outside of the menu will close it, causing it to slide off the page. The hamburger icon is a React button element of class `.hamburger`, so I can control its display in the media queries. Since I am adhering to the mobile first approach, the navbar's link list is hidden by default by setting `display: none;` for the `.nav-links`.
+For this section, I went a bit "above and beyond" what we were requested to do. I included a hamburger icon that replaces the link list on smaller devices; clicking or tapping the icon will open an animated, non-intrusive navigation menu with the links arranged vertically. Clicking or tapping anywhere outside of the menu (or clicking the icon again) will close it, causing it to slide off the page. The hamburger icon is a React button element of class `.hamburger`, so I can control its display in the media queries. Since I am adhering to the mobile first approach, the navbar's link list is hidden by default by setting `display: none;` for the `.nav-links`.
 
 The menu controlled by the hamburger icon is always rendered, but it is off-screen by default. Originally the menu would undesirably appear on page load and then slide off the right side of the screen. I addressed this by initializing the menu's state variable to `null` on initial app render: `const [isMenuOpen, setIsMenuOpen] = useState(null);`. I then added a `.hidden` class for the hamburger menu, which the menu receives only if `isMenuOpen` is `null`. If the hamburger icon is clicked, the `toggleMenu` function fires and either opens or closes the menu by conditionally adding or removing `.open` from the menu's classes, facilitated by setting `isMenuOpen` to either true or false. This is all controlled by
 
@@ -84,6 +84,68 @@ and
     ref={menuRef}
     className={`hamburger-menu ${isMenuOpen === null ? "hidden" : isMenuOpen ? "open" : ""}`}
 >
+// Links
+</div>
 ```
 
 Note that the `toggleMenu` function includes `e.stopPropagation();`! This is because upon clicking the hamburger icon, it would open and then immediately close, due to event bubbling.
+
+The closing of the menu upon clicking outside of it is controlled by a `useEffect` hook. The hook sets up a click event listener upon component mount, accompanied by an associated `clickHandler` function. At first, I intended to use a do-while loop to traverse the virtual DOM and determine the location of the click event; however, this method utilized `document.querySelector()`, which *bypasses* React's virtual DOM. Since this is not consistent with React's best practices, I embraced an ultimately simpler approach and used the obvious solution of `useRef`, giving me direct access to the DOM node:
+
+```
+const handleClick = (e) => {
+    if (menuRef.current && menuRef.current.contains(e.target))
+        return;
+
+    setIsMenuOpen(false);
+};
+```
+
+This code checks to see if the click event's target (`e.target`) is a descendant of the `current` node - namely, if the clicked element is "inside" the menu. If so, it does nothing. Otherwise, it invokes `setIsMenuOpen(false)`.
+
+But how is the menu positioned? When the menu is closed, it lives just off the right side of the screen. When opened, it slides to the left into the visible area by an amount equal to its width, and just under the bottom edge of the header, where the navbar resides. To accomplish this, we need:
+
+- the header's height (so we can ensure that the menu is below it)
+- the menu's width (so the menu slides in and out by the correct amount)
+
+Either of these values are subject to change during the website's lifetime, so we don't want to hard-code these values in. Instead, I have them calculated dynamically by two functions, respectively: `getHeaderHeight()` and `getMenuWidth()`:
+
+```
+const getHeaderHeight = () => {
+    if (headerRef.current)
+        return `${headerRef.current.offsetHeight}px`;
+    return 0;
+};
+
+const getMenuWidth = () => {
+    if (menuRef.current)
+        return menuRef.current.offsetWidth;
+    return 0;
+};
+```
+
+The menu's vertical position is always determined by the header's height, so I reflect this in the CSS by `menuRef.current.style.top = menuVerticalPosition;`. However, the menu's horizontal position is conditional: if closed, it needs to be off-screen, and when open, it needs to be on-screen. I decided to make it stay *just* off-screen by an amount equal to its dynamic width plus 2 additional pixels. Why? Well, without the extra 2 pixel buffer, rounding issues and sub-pixel rendering can make the left edge of the menu appear on the right edge of the screen. So I define another function:
+
+```
+const getMenuHorizontalPosition = () => {
+    return isMenuOpen ? "0" : `calc(-${getMenuWidth()}px - 2px)`;
+};
+```
+
+The values `0` and ```calc(-${getMenuWidth()}px - 2px)``` (note the minus sign!) represent the opened and closed `right` CSS property values for the opened and closed states, respectively.
+
+This all comes to fruition in a `useEffect` hook (because we are manipulating the DOM) which updates every time `isMenuOpen`'s Boolean value switches:
+
+```
+useEffect(() => {
+    const menuHorizontalPosition = getMenuHorizontalPosition();
+    const menuVerticalPosition = getHeaderHeight();
+
+    if (menuRef.current) {
+        menuRef.current.style.top = menuVerticalPosition;
+        menuRef.current.style.right = menuHorizontalPosition;
+    };
+}, [isMenuOpen]);
+```
+
+And there you have it! To animate the menu, we simply need to add a transition property to the CSS for `.hamburger-menu`: `transition: right 200ms ease-in-out;`.
