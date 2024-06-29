@@ -148,9 +148,3 @@ button:not([class]):disabled:active {
     color: var(--highlight-black);
     outline-color: hsl(0 80% 60%);
 }
-
-button.hamburger {
-    background-color: #ffffff;
-    border: none;
-    padding: 0;
-}

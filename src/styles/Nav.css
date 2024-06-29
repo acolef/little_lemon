@@ -26,8 +26,21 @@ header {
 }
 
 /* Hide links behind hamburger menu icon for screens < 1200px */
-.nav-elements > button {
+button.hamburger {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 70px;
+    height: 50px;
+    background-color: #ffffff;
+    border: none;
+    padding: 0;
+}
+
+/* By default this is fill, but we want none to prevent image distortion */
+.nav-elements > button > img {
+    object-fit: none;
 }
 
 /* The ul that contains the links for screens > 1200px */
