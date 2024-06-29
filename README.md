@@ -150,9 +150,6 @@ useEffect(() => {
 
 And there you have it! To animate the menu, we simply need to add a transition property to the CSS for `.hamburger-menu`: `transition: right 200ms ease-in-out;`.
 
-[^1]: [Hamburger menu icon source](https://icons8.com/icon/36389/menu)
-[^2]: ["x" icon source](https://icons8.com/icon/95771/multiply)
-
 ## The table reservation page
 The table booking page features a reservation form with a conditionally enabled (or disabled) submit button. The form features client-side form validation, and the required fields (all of the fields, as I think these are all necessary for a table booking) are denoted by red asterisks. Making the asterisks red helps bring attention to them, but for those that cannot perceive red or have visual impairments, the presence of the asterisk is still widely understood to indicate required fields. Furthermore, ARIA attributes have been associated with each form input. Fields have custom CSS to make form interaction easy and, hopefully, fairly obvious. All form fields are controlled inputs, and no payment info is recorded.
 
@@ -207,4 +204,10 @@ useEffect(() => {
 }, [selectedDay, allTimesDisabled]);
 ```
 
-Finally, the submit button is either enabled or disabled, according to `disabled=isButtonDisabled()`. Note that we pass the *result* of `isButtonDisabled`, rather than a mere function reference. For a while, my button was not disabling properly in Brave. This was the culprit!
+The submit button is either enabled or disabled, according to `disabled=isButtonDisabled()`. Note that we pass the *result* of `isButtonDisabled`, rather than a mere function reference. For a while, my button was not disabling properly in Brave. This was the culprit!
+
+As an additional exercise, I decided to customize the range input for the guests. Tinkering with the range input is inherently a messy task,[^3] but I had my heart set on making Little Lemon's eponymous fruit star in the show: the slider thumb is indeed a little lemon. Positioning the thumb and coloring the progress indicator differs between browser families, so hopefully I covered all my bases when styling the input. If you are using a Chromium-based browser, the entire slider should be the primary yellow color stipulated in the design document. For Firefox, the track should fill with the color as you slide the thumb. The CSS I applied should cover other major browsers too, but I have not tested them.
+
+[^1]: [Hamburger menu icon source](https://icons8.com/icon/36389/menu)
+[^2]: ["x" icon source](https://icons8.com/icon/95771/multiply)
+[^3]: Ana Tudor's article [here](https://css-tricks.com/sliding-nightmare-understanding-range-input/) should suffice to demonstrate how tricky it can be
