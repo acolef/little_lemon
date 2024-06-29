@@ -190,7 +190,7 @@ As you can see, the map method loops over the `availableTimes` array, checking i
 ```
 {
     allTimesDisabled && <p className="times-disabled">No times left for today - try a different day</p>
-            }
+}
 ```
 
 The `allTimesDisabled` variable is modified using another `useEffect` hook. By employing `useRef`, it creates a reference to the time input and then creates an array of the time input's options; if the array is empty, `allTimesDisabled` is set to `true`, `false` otherwise. The dependency array for the `useEffect` contains `selectedDay` and `allTimesDisabled`, so the message will display upon the user selecting a day during which all the times have passed, or when selecting a day when they have not. Altogether we have:
