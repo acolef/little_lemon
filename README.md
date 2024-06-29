@@ -65,9 +65,9 @@ I imported the site's internal links from the `Nav` component instead of definin
 ## The navbar
 The site's internal links live in the `Nav` component. They are stored in an array of objects, each object possessing an `info` and a `url` property; `info` contains the link's visible label, whereas the `url` property controls the actual routing. The navbar itself is always visible at the top of the page, because I set the header element's position to `fixed` with a `z-index` of 2, rendering it above the rest of the page's contents.
 
-For this section, I went a bit "above and beyond" what we were requested to do. I included a hamburger icon that replaces the link list on smaller devices; clicking or tapping the icon will open an animated, non-intrusive navigation menu with the links arranged vertically. Clicking or tapping anywhere outside of the menu (or clicking the icon again) will close it, causing it to slide off the page. The hamburger icon is a React button element of class `.hamburger`, so I can control its display in the media queries. Since I am adhering to the mobile first approach, the navbar's link list is hidden by default by setting `display: none;` for the `.nav-links`.
+For this section, I went a bit "above and beyond" what we were requested to do. I included a hamburger icon[^1] that replaces the link list on smaller devices; clicking or tapping the icon will open an animated, non-intrusive navigation menu with the links arranged vertically; in addition, the hamburger icon updates to an "x"[^2]. Clicking or tapping anywhere outside of the menu (or clicking the icon again) will close it and return the icon to the hamburger. The hamburger icon is a React button element of class `.hamburger`, so I can control its display in the media queries. Since I am adhering to the mobile first approach, the navbar's link list is hidden by default by setting `display: none;` for the `.nav-links`.
 
-The menu controlled by the hamburger icon is always rendered, but it is off-screen by default. Originally the menu would undesirably appear on page load and then slide off the right side of the screen. I addressed this by initializing the menu's state variable to `null` on initial app render: `const [isMenuOpen, setIsMenuOpen] = useState(null);`. I then added a `.hidden` class for the hamburger menu, which the menu receives only if `isMenuOpen` is `null`. If the hamburger icon is clicked, the `toggleMenu` function fires and either opens or closes the menu by conditionally adding or removing `.open` from the menu's classes, facilitated by setting `isMenuOpen` to either true or false. This is all controlled by
+The menu controlled by the hamburger icon is always rendered, but it is off-screen by default. Originally the menu would undesirably appear on page load and then slide off the right side of the screen. I addressed this by initializing the menu's state variable to `null` on initial app render: `const [isMenuOpen, setIsMenuOpen] = useState(null);`. I then added a `.hidden` class for the hamburger menu, which the menu receives only if `isMenuOpen` is `null`. If the hamburger icon is clicked, the `toggleMenu` function fires and either opens or closes the menu by conditionally adding or removing `.open` from the menu's classes, facilitated by setting `isMenuOpen` to either `true` or `false`. This is all controlled by
 
 ```
 const toggleMenu = (e) => {
@@ -88,7 +88,7 @@ and
 </div>
 ```
 
-Note that the `toggleMenu` function includes `e.stopPropagation();`! This is because upon clicking the hamburger icon, it would open and then immediately close, due to event bubbling.
+Note that the `toggleMenu` function includes `e.stopPropagation();`! This is because upon clicking the hamburger icon, the menu would open and then immediately close, due to event bubbling.
 
 The closing of the menu upon clicking outside of it is controlled by a `useEffect` hook. The hook sets up a click event listener upon component mount, accompanied by an associated `clickHandler` function. At first, I intended to use a do-while loop to traverse the virtual DOM and determine the location of the click event; however, this method utilized `document.querySelector()`, which *bypasses* React's virtual DOM. Since this is not consistent with React's best practices, I embraced an ultimately simpler approach and used the obvious solution of `useRef`, giving me direct access to the DOM node:
 
@@ -149,3 +149,62 @@ useEffect(() => {
 ```
 
 And there you have it! To animate the menu, we simply need to add a transition property to the CSS for `.hamburger-menu`: `transition: right 200ms ease-in-out;`.
+
+[^1]: [Hamburger menu icon source](https://icons8.com/icon/36389/menu)
+[^2]: ["x" icon source](https://icons8.com/icon/95771/multiply)
+
+## The table reservation page
+The table booking page features a reservation form with a conditionally enabled (or disabled) submit button. The form features client-side form validation, and the required fields (all of the fields, as I think these are all necessary for a table booking) are denoted by red asterisks. Making the asterisks red helps bring attention to them, but for those that cannot perceive red or have visual impairments, the presence of the asterisk is still widely understood to indicate required fields. Furthermore, ARIA attributes have been associated with each form input. Fields have custom CSS to make form interaction easy and, hopefully, fairly obvious. All form fields are controlled inputs, and no payment info is recorded.
+
+The booking page is rendered via the `Booking` component, which is responsible for rendering the actual form, which resides in the `BookingForm` component. `Booking` interfaces with an API which simulates the availabilities for the booking time slots. The API was provided to us, and it basically generates random times from 17:00 to 23:30 with a granularity of 30 minutes, and seeded with the day passed to the API. `Booking` is therefore stateful, and is endowed with the `availableTimes` array state variable for managing the times open for booking. Since the state logic is somewhat complex, `useReducer` is the ideal implementation. The hook receives an `updateTimes` reducer function responsible for updating the list of available booking times, whereas `initializeTimes()` populates the time list with the current day's times. Upon submission of the form, the API is consulted again, this time calling the `submitAPI` function, which returns `true` upon receipt of the (client-side) validated form data, and `useNavigate` sends the user to a simple confirmation page.
+
+The `BookingForm` component naturally comprises the bulk of the working parts of the booking process. It accepts a few props from its parent: the `availableTimes` array, a dispatch for the reducer, and the form submission function. It has multiple state variables:
+
+- `formData` - This is where the form's input values are stored
+- `allTimesDisabled` - A Boolean that denotes whether *all* the booking times for the day have already passed
+- `selectedDay` - The day from the `Date()` object associated with the intended booking date
+
+It also possesses a number of functions:
+
+- `handleChange(e)` - Responsible for updating form data as the user makes inputs. It spreads the `formData` state variable and injects updates, encapsulated in `e.target.value`, by referring to the event target's (i.e., the input's) HTML `name` attribute via `[e.target.name]`
+- `handleDate(e)` - Saves the user's selected booking day in the `selectedDay` state variable. Note that by default JavaScript uses the UTC time here, so we have to offset this to the user's locale time by adding the time zone difference (in minutes) to the `selectedDay`'s minutes. This should work regardless of the user's time zone!
+- `handleSubmit(e)` - Prevents the default HTML form submission behavior and instead fires `submitForm(formData)` upon submission
+- `formatDate(date)` - Formats the given `Date()` object in HTML-ready form (YYYY-MM-DD)
+- `formatTime(date)` - Extracts the time from the given `Date()` object and converts it to a numerical value of the form hh.mm, for easy comparisons
+- `formatAvailableTime(time)` - Essentially the same as above, but in lieu of formatting the time portion of a `Date()` object, it formats a time value from `availableTimes`. It does this by taking the sub-string before the colon and the sub-string following the colon in a time value and joins them together in a numerical value, again of the form hh.mm
+- `isTimeDisabled(time)` - Checks if any given values in `availableTimes` have already passed, and returns `true` if so, `false` otherwise. The logic checks if an available time is less than the user's locale time, *and* the selected day is prior or equal to the actual current day
+- `isButtonDisabled()` - Indicates if the submit button is disabled. The function validates that the first name, last name, time, and occassion fields are filled out; every other field (the date and guest amount) is filled with a value by default and possesses a minimum value, and thus cannot ever be empty
+
+Every field is hooked up to the `handleChange` function through their `onChange` attributes. A `useEffect` hook is utilized to help ensure initializion of the guest amount (which originally was not occurring on render) and the current date, based on the user's locale. The date input fires two additional functions on change: `handleDate(e)` and the reducer's dispatch function. In the latter case, the dispatch's payload object is equipped with whatever date the user selects for the booking. The booking times list is populated with the times from `availableTimes`, as determined by the API. However, I added some additional functionality: it does not make sense to include times which are in the past, so I conditionally render the available times via
+
+```
+{availableTimes.map((time, i) => {
+    return (
+        !isTimeDisabled(time) && <option key={i}>{time}</option>
+    );
+})}
+```
+
+As you can see, the map method loops over the `availableTimes` array, checking if each time is "disabled" (i.e., has already passed). If so, it avoids using that time at all. If no times are left for the day, the user is notified via a message:
+
+```
+{
+    allTimesDisabled && <p className="times-disabled">No times left for today - try a different day</p>
+            }
+```
+
+The `allTimesDisabled` variable is modified using another `useEffect` hook. By employing `useRef`, it creates a reference to the time input and then creates an array of the time input's options; if the array is empty, `allTimesDisabled` is set to `true`, `false` otherwise. The dependency array for the `useEffect` contains `selectedDay` and `allTimesDisabled`, so the message will display upon the user selecting a day during which all the times have passed, or when selecting a day when they have not. Altogether we have:
+
+```
+useEffect(() => {
+    const timeSelect = timeSelectRef.current;
+    const times = timeSelect.options;
+
+    if (Array.from(times).length === 0)
+        setAllTimesDisabled(true);
+    else
+        setAllTimesDisabled(false);
+}, [selectedDay, allTimesDisabled]);
+```
+
+Finally, the submit button is either enabled or disabled, according to `disabled=isButtonDisabled()`. Note that we pass the *result* of `isButtonDisabled`, rather than a mere function reference. For a while, my button was not disabling properly in Brave. This was the culprit!
