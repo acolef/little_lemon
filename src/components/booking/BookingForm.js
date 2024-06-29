@@ -15,10 +15,12 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
     const timeSelectRef = useRef(null);
 
+    // Updates formData with user inputs
     const handleChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // Sets selectedDay state variable for time checking
     const handleDate = e => {
         const selectedDate = new Date(e.target.value);
         // Have to offset UTC time to normalize time to user's locale time, ensuring proper day is set
@@ -33,6 +35,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         submitForm(formData);
     };
 
+    // Formats dates into HTML appropriate format
     const formatDate = date => {
         // Break date up
         const day = date.getDate();
