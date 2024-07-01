@@ -18,7 +18,7 @@ During development, I decided to add some additional functionalities which we we
 
 The app has been tested in the Brave browser (Chromium-based) and Mozilla Firefox; however, some rudimentary automated tests (using Jest) are included as well. It was designed according to the "mobile first" philosophy, targetting by default screens of widths ranging from 600 and 768 pixels. Of course, media queries are present to make the site readily accessible to as many devices as possible. The site, on my Linux machine, is best viewed in Firefox, but it should work fine in any major browser. Chromium browsers use a different font rendering method which makes the header font less appealing, in my experience. Perhaps you will not encounter these issues on your system.
 
-If you are interested, I share some of my thoughts and trials during the development process below; however, ultimately the site should speak for itself! At the very end, I feature a to-do list, with ideas for enhancing the site. The discussion below may be helpful to others tackling this project.
+If you are interested, I share some of my thoughts and trials during the development process below; however, ultimately the site should speak for itself! The discussion below may be helpful to others tackling this project.
 
 ## The homepage
 In addition to a responsive navbar (which is present on all pages), the homepage consists of several components:
