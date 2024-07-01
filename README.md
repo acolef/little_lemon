@@ -163,11 +163,11 @@ The `BookingForm` component naturally comprises the bulk of the working parts of
 
 It also possesses a number of functions:
 
-- `handleChange(e)` - Responsible for updating form data as the user makes inputs. It spreads the `formData` state variable and injects updates, encapsulated in `e.target.value`, by referring to the event target's (i.e., the input's) HTML `name` attribute via `[e.target.name]`
+- `handleChange(e)` - Responsible for updating form data as the user makes inputs. It spreads the `formData` state variable and injects any given update, encapsulated in `e.target.value`, by referring to the event target's (i.e., the input's) HTML `name` attribute via `[e.target.name]`
 - `handleDate(e)` - Saves the user's selected booking day in the `selectedDay` state variable. Note that by default JavaScript uses the UTC time here, so we have to offset this to the user's locale time by adding the time zone difference (in minutes) to the `selectedDay`'s minutes. This should work regardless of the user's time zone!
 - `handleSubmit(e)` - Prevents the default HTML form submission behavior and instead fires `submitForm(formData)` upon submission
 - `formatDate(date)` - Formats the given `Date()` object in HTML-ready form (YYYY-MM-DD)
-- `formatTime(date)` - Extracts the time from the given `Date()` object and converts it to a numerical value of the form hh.mm, for easy comparisons
+- `formatTime(date)` - Extracts the time from the given `Date()` object and converts it to a numerical value of the form hh.mm, for making easy comparisons
 - `formatAvailableTime(time)` - Essentially the same as above, but in lieu of formatting the time portion of a `Date()` object, it formats a time value from `availableTimes`. It does this by taking the sub-string before the colon and the sub-string following the colon in a time value and joins them together in a numerical value, again of the form hh.mm
 - `isTimeDisabled(time)` - Checks if any given values in `availableTimes` have already passed, and returns `true` if so, `false` otherwise. The logic checks if an available time is less than the user's locale time, *and* the selected day is prior or equal to the actual current day
 - `isButtonDisabled()` - Indicates if the submit button is disabled. The function validates that the first name, last name, time, and occassion fields are filled out; every other field (the date and guest amount) is filled with a value by default and possesses a minimum value, and thus cannot ever be empty
