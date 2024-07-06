@@ -71,13 +71,15 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     };
 
     /* Takes current date, formats it, and passes it to stateful date variable
-     * Also ensures that initial guest amount displays on page load
+     * Ensures that initial guest amount displays on page load
+     * Ensures that a default time is selected on page load
      */
     useEffect(() => {
         setFormData({
             ...formData,
             guests: 4,
             date: formatDate(currentDate),
+            time: availableTimes[0],
         });
     }, []);
 
